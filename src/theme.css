@@ -1,0 +1,1494 @@
+/* @settings
+
+name: Suliworld
+id: suliworld
+settings:
+    -
+        id: sw-typography
+        title: Typography
+        type: heading
+        level: 2
+        collapsed: false
+    -
+        id: sw-light-font
+        title: Light mode fonts
+        description: Text × display pairing (heading accents, quotes, drop cap)
+        type: class-select
+        allowEmpty: false
+        default: sw-lf-a
+        options:
+            -
+                label: A · Outfit × Newsreader
+                value: sw-lf-a
+            -
+                label: B · Manrope × Instrument Serif
+                value: sw-lf-b
+            -
+                label: C · Plus Jakarta Sans × Young Serif
+                value: sw-lf-c
+            -
+                label: D · Hanken Grotesk × Gloock
+                value: sw-lf-d
+            -
+                label: E · Albert Sans × DM Mono
+                value: sw-lf-e
+    -
+        id: sw-dark-font
+        title: Dark mode fonts
+        type: class-select
+        allowEmpty: false
+        default: sw-df-b
+        options:
+            -
+                label: A · Outfit × Newsreader
+                value: sw-df-a
+            -
+                label: B · Manrope × Instrument Serif
+                value: sw-df-b
+            -
+                label: C · Plus Jakarta Sans × Young Serif
+                value: sw-df-c
+            -
+                label: D · Hanken Grotesk × Gloock
+                value: sw-df-d
+            -
+                label: E · Albert Sans × DM Mono
+                value: sw-df-e
+    -
+        id: sw-layout
+        title: Layout
+        type: heading
+        level: 2
+        collapsed: false
+    -
+        id: sw-light-variant
+        title: Light mode variant
+        description: Cream (white sidebars, pill tabs) or Forest (deep green sidebars, orange-underlined tabs)
+        type: class-select
+        allowEmpty: false
+        default: sw-light-cream
+        options:
+            -
+                label: Cream
+                value: sw-light-cream
+            -
+                label: Forest
+                value: sw-light-forest
+    -
+        id: sw-cards
+        title: Floating cards
+        description: Rounded floating panes, like the cards on suliworld.com (desktop only)
+        type: class-select
+        allowEmpty: false
+        default: sw-cards-dark
+        options:
+            -
+                label: Dark mode only
+                value: sw-cards-dark
+            -
+                label: Always
+                value: sw-cards-always
+            -
+                label: Never
+                value: sw-cards-never
+    -
+        id: sw-link-icon
+        title: External link icon
+        type: class-select
+        allowEmpty: false
+        default: sw-link-arrow
+        options:
+            -
+                label: ↗ arrow (link color)
+                value: sw-link-arrow
+            -
+                label: None
+                value: sw-link-none
+            -
+                label: Obsidian default
+                value: sw-link-native
+    -
+        id: sw-dropcap
+        title: Drop cap
+        description: First letter of the note in the display font, in reading view
+        type: class-toggle
+        default: false
+    -
+        id: sw-plain-quotes
+        title: Plain blockquotes
+        description: Replaces the editorial quote (peach box, display font) with a classic blockquote
+        type: class-toggle
+        default: false
+    -
+        id: sw-plain-embeds
+        title: Plain embeds
+        description: Replaces the dark green card around embedded notes with a neutral frame
+        type: class-toggle
+        default: false
+    -
+        id: sw-bujo-heading
+        title: Bullet journal signifiers
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: sw-bujo
+        title: Enable bullet journal signifiers
+        description: "Replaces the task checkbox based on the character between the brackets: [ ] task, [x] done, [*] event, [n] note, [>] migrated, [<] scheduled, [!] important. Events and notes aren't clickable."
+        type: class-toggle
+        default: true
+    -
+        id: sw-bujo-size
+        title: Signifier size
+        type: variable-number-slider
+        default: 1.1
+        min: 0.7
+        max: 1.6
+        step: 0.05
+        format: em
+    -
+        id: sw-bujo-todo-glyph
+        title: "[ ] Task — symbol"
+        type: variable-text
+        default: •
+        quotes: true
+    -
+        id: sw-bujo-todo-color
+        title: "[ ] Task — color"
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#1B1A17'
+        default-dark: '#F4EFE6'
+    -
+        id: sw-bujo-done-glyph
+        title: "[x] Done — symbol"
+        type: variable-text
+        default: ×
+        quotes: true
+    -
+        id: sw-bujo-done-color
+        title: "[x] Done — color"
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#8B8170'
+        default-dark: '#8E8676'
+    -
+        id: sw-bujo-event-glyph
+        title: "[*] Event — symbol"
+        type: variable-text
+        default: ✱
+        quotes: true
+    -
+        id: sw-bujo-event-color
+        title: "[*] Event — color"
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#E0522A'
+        default-dark: '#FF8A63'
+    -
+        id: sw-bujo-note-glyph
+        title: "[n] Note — symbol"
+        type: variable-text
+        default: ■
+        quotes: true
+    -
+        id: sw-bujo-note-color
+        title: "[n] Note — color"
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#1F3B2D'
+        default-dark: '#8FCFAA'
+    -
+        id: sw-bujo-migrated-glyph
+        title: "[>] Migrated — symbol"
+        type: variable-text
+        default: ›
+        quotes: true
+    -
+        id: sw-bujo-migrated-color
+        title: "[>] Migrated — color"
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#8B8170'
+        default-dark: '#ADA595'
+    -
+        id: sw-bujo-scheduled-glyph
+        title: "[<] Scheduled — symbol"
+        type: variable-text
+        default: ‹
+        quotes: true
+    -
+        id: sw-bujo-scheduled-color
+        title: "[<] Scheduled — color"
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#8B8170'
+        default-dark: '#ADA595'
+    -
+        id: sw-bujo-important-glyph
+        title: "[!] Important — symbol"
+        type: variable-text
+        default: "!"
+        quotes: true
+    -
+        id: sw-bujo-important-color
+        title: "[!] Important — color"
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#712B13'
+        default-dark: '#FFE0C7'
+*/
+
+/* =========================================================
+   Suliworld — Obsidian theme
+   Light = "Cream" (or the "Forest" variant), dark = "Night cards".
+   Tokens mirror the stylesheet of https://www.suliworld.com.
+   Fonts are embedded at the end of theme.css by build.sh.
+   ========================================================= */
+
+/* ---------- Shared tokens ---------- */
+body {
+    /* Pairing A by default, see the pairing blocks below */
+    --sw-font-sans: "Outfit";
+    --sw-font-display: "Newsreader";
+    --sw-display-style: italic;
+
+    --font-text-theme: var(--sw-font-sans), system-ui, -apple-system, sans-serif;
+    --font-interface-theme: var(--sw-font-sans), system-ui, -apple-system, sans-serif;
+    --font-monospace-theme: "iA Writer Duo", ui-monospace, "SF Mono", Menlo, monospace;
+    --sw-font-display-stack: var(--sw-font-display), Georgia, "Times New Roman", serif;
+
+    --sw-green: #1f3b2d;
+    --sw-green-2: #2a4a3a;
+    --sw-on-green: #fbf7f0;
+    --sw-on-green-muted: #c9d8ce;
+    --sw-orange: #ff6a3d;
+    --sw-accent-soft: #ff8a63;
+
+    --radius-s: 6px;
+    --radius-m: 10px;
+    --radius-l: 16px;
+    --radius-xl: 20px;
+    --sw-pill: 999px;
+
+    --file-line-width: 720px;
+    --line-height-normal: 1.7;
+
+    --bold-weight: 600;
+    --inline-title-size: 2.5em;
+    --inline-title-weight: 300;
+    --inline-title-line-height: 1.05;
+    --h1-size: 2.25em;
+    --h1-weight: 300;
+    --h1-line-height: 1.05;
+    --h2-size: 1.6em;
+    --h2-weight: 600;
+    --h2-line-height: 1.15;
+    --h3-size: 1.3em;
+    --h3-weight: 600;
+    --h3-line-height: 1.2;
+    --h4-size: 1.12em;
+    --h4-weight: 600;
+    --h5-size: 1em;
+    --h5-weight: 600;
+    --h6-size: 0.8em;
+    --h6-weight: 700;
+
+    --tag-radius: var(--sw-pill);
+    --tag-padding-x: 10px;
+    --tag-padding-y: 2px;
+    --tag-weight: 600;
+    --tag-size: 0.8em;
+    --tag-border-width: 0;
+
+    --callout-radius: var(--radius-l);
+    --callout-border-width: 0;
+    --callout-padding: 14px 18px;
+    --callout-title-weight: 600;
+
+    --blockquote-border-thickness: 0;
+    --embed-border-start: 0;
+    --embed-border-left: 0;
+
+    --checkbox-radius: var(--radius-s);
+    --code-radius: 14px;
+    --input-radius: var(--radius-m);
+    --button-radius: var(--sw-pill);
+    --modal-radius: var(--radius-xl);
+    --tab-curve: 0;
+    --tab-radius: var(--sw-pill);
+    --tab-radius-active: var(--sw-pill);
+    --tab-divider-color: transparent;
+
+    --nav-item-weight-active: 600;
+    --nav-item-radius: var(--sw-pill);
+
+    /* Code blocks are dark in both modes, like the site's <pre> */
+    --sw-pre-bg: #1b1a17;
+    --sw-code-normal: #fbf7f0;
+    --sw-code-comment: #8e8676;
+    --sw-code-function: #ffe0c7;
+    --sw-code-important: #fff1a8;
+    --sw-code-keyword: #ff8a63;
+    --sw-code-operator: #ada595;
+    --sw-code-property: #d6e6ff;
+    --sw-code-punctuation: #ada595;
+    --sw-code-string: #cdebd9;
+    --sw-code-tag: #ff8a63;
+    --sw-code-value: #e3daff;
+}
+
+/* ---------- Font pairings (same as suliworld.com) ---------- */
+body.theme-dark {
+    --sw-font-sans: "Manrope";
+    --sw-font-display: "Instrument Serif";
+    --sw-display-style: italic;
+}
+
+body.theme-light.sw-lf-a,
+body.theme-dark.sw-df-a {
+    --sw-font-sans: "Outfit";
+    --sw-font-display: "Newsreader";
+    --sw-display-style: italic;
+}
+
+body.theme-light.sw-lf-b,
+body.theme-dark.sw-df-b {
+    --sw-font-sans: "Manrope";
+    --sw-font-display: "Instrument Serif";
+    --sw-display-style: italic;
+}
+
+body.theme-light.sw-lf-c,
+body.theme-dark.sw-df-c {
+    --sw-font-sans: "Plus Jakarta Sans";
+    --sw-font-display: "Young Serif";
+    --sw-display-style: normal;
+}
+
+body.theme-light.sw-lf-d,
+body.theme-dark.sw-df-d {
+    --sw-font-sans: "Hanken Grotesk";
+    --sw-font-display: "Gloock";
+    --sw-display-style: normal;
+}
+
+body.theme-light.sw-lf-e,
+body.theme-dark.sw-df-e {
+    --sw-font-sans: "Albert Sans";
+    --sw-font-display: "DM Mono";
+    --sw-display-style: italic;
+}
+
+/* ---------- Light: Cream ---------- */
+.theme-light {
+    --sw-bg: #fbf7f0;
+    --sw-bg-2: #f4eee3;
+    --sw-surface: #ffffff;
+    --sw-text: #1b1a17;
+    --sw-body: #2a2823;
+    --sw-meta: #4a463e;
+    --sw-muted: #5b574f;
+    --sw-subtle: #8b8170;
+    --sw-border: #efe6d6;
+    --sw-border-strong: #e2d8c6;
+    --sw-accent: #e0522a;
+    --sw-link: #b8431c;
+    --sw-ink: #1b1a17;
+    --sw-on-ink: #ffffff;
+    --sw-canvas: #fbf7f0;
+
+    --sw-tint-mint: #cdebd9;
+    --sw-tint-lavender: #e3daff;
+    --sw-tint-peach: #ffe0c7;
+    --sw-tint-blue: #d6e6ff;
+    --sw-tint-yellow: #fff1a8;
+    --sw-ink-mint: #1f3b2d;
+    --sw-ink-lavender: #3c3489;
+    --sw-ink-peach: #712b13;
+    --sw-ink-blue: #0c447c;
+    --sw-ink-yellow: #5c4a05;
+
+    --sw-nav-active-bg: var(--sw-green);
+    --sw-nav-active-fg: #ffffff;
+    --sw-heading-green: var(--sw-green);
+
+    --accent-h: 13;
+    --accent-s: 75%;
+    --accent-l: 52%;
+
+    --background-primary: var(--sw-bg);
+    --background-primary-alt: var(--sw-bg-2);
+    --background-secondary: var(--sw-surface);
+    --background-secondary-alt: var(--sw-bg);
+    --background-modifier-border: var(--sw-border);
+    --background-modifier-border-hover: var(--sw-border-strong);
+    --background-modifier-border-focus: var(--sw-orange);
+    --background-modifier-hover: rgba(27, 26, 23, 0.05);
+    --background-modifier-active-hover: rgba(224, 82, 42, 0.1);
+    --background-modifier-form-field: var(--sw-surface);
+    --divider-color: var(--sw-border);
+
+    --text-normal: var(--sw-text);
+    --text-muted: var(--sw-muted);
+    --text-faint: var(--sw-subtle);
+    --text-accent: var(--sw-link);
+    --text-accent-hover: var(--sw-green);
+    --text-on-accent: #ffffff;
+    --text-selection: rgba(255, 106, 61, 0.2);
+    --text-highlight-bg: var(--sw-tint-yellow);
+
+    --interactive-normal: var(--sw-surface);
+    --interactive-hover: var(--sw-bg-2);
+    --interactive-accent: var(--sw-green);
+    --interactive-accent-hover: var(--sw-green-2);
+
+    --ribbon-background: var(--sw-bg);
+    --ribbon-background-collapsed: var(--sw-bg);
+    --titlebar-background: var(--sw-bg);
+    --titlebar-background-focused: var(--sw-bg);
+    --tab-container-background: var(--sw-surface);
+    --status-bar-background: var(--sw-surface);
+
+    --code-background: var(--sw-border);
+    --code-normal: var(--sw-text);
+
+    --graph-node: var(--sw-subtle);
+    --graph-node-unresolved: var(--sw-border-strong);
+    --graph-node-focused: var(--sw-orange);
+    --graph-node-tag: #3f8a62;
+    --graph-node-attachment: #7f6fd6;
+    --graph-line: var(--sw-border-strong);
+
+    --color-orange: var(--sw-orange);
+    --color-green: #3f8a62;
+}
+
+/* ---------- Dark: Night cards ---------- */
+.theme-dark {
+    --sw-bg: #151412;
+    --sw-bg-2: #1b1a17;
+    --sw-surface: #211f1b;
+    --sw-text: #f4efe6;
+    --sw-body: #e4ded2;
+    --sw-meta: #bdb5a6;
+    --sw-muted: #ada595;
+    --sw-subtle: #8e8676;
+    --sw-border: #2e2a24;
+    --sw-border-strong: #3a352d;
+    --sw-accent: #ff8a63;
+    --sw-link: #ff8a63;
+    --sw-ink: #f4efe6;
+    --sw-on-ink: #151412;
+    --sw-canvas: #151412;
+
+    --sw-tint-mint: #1e3a2b;
+    --sw-tint-lavender: #2c2745;
+    --sw-tint-peach: #43291a;
+    --sw-tint-blue: #1c2c45;
+    --sw-tint-yellow: #3b3418;
+    --sw-ink-mint: #cdebd9;
+    --sw-ink-lavender: #e3daff;
+    --sw-ink-peach: #ffe0c7;
+    --sw-ink-blue: #d6e6ff;
+    --sw-ink-yellow: #fff1a8;
+
+    --sw-nav-active-bg: var(--sw-ink);
+    --sw-nav-active-fg: var(--sw-on-ink);
+    --sw-heading-green: #8fcfaa;
+
+    --accent-h: 15;
+    --accent-s: 100%;
+    --accent-l: 69%;
+
+    --background-primary: var(--sw-bg);
+    --background-primary-alt: var(--sw-bg-2);
+    --background-secondary: var(--sw-surface);
+    --background-secondary-alt: var(--sw-bg-2);
+    --background-modifier-border: var(--sw-border);
+    --background-modifier-border-hover: var(--sw-border-strong);
+    --background-modifier-border-focus: var(--sw-accent-soft);
+    --background-modifier-hover: rgba(244, 239, 230, 0.06);
+    --background-modifier-active-hover: rgba(255, 138, 99, 0.14);
+    --background-modifier-form-field: var(--sw-bg-2);
+    --divider-color: var(--sw-border);
+
+    --text-normal: var(--sw-text);
+    --text-muted: var(--sw-muted);
+    --text-faint: var(--sw-subtle);
+    --text-accent: var(--sw-link);
+    --text-accent-hover: var(--sw-text);
+    --text-on-accent: #ffffff;
+    --text-selection: rgba(255, 138, 99, 0.25);
+    --text-highlight-bg: var(--sw-tint-yellow);
+
+    --interactive-normal: var(--sw-border);
+    --interactive-hover: var(--sw-border-strong);
+    --interactive-accent: var(--sw-green);
+    --interactive-accent-hover: var(--sw-green-2);
+
+    --ribbon-background: var(--sw-bg);
+    --ribbon-background-collapsed: var(--sw-bg);
+    --titlebar-background: var(--sw-bg);
+    --titlebar-background-focused: var(--sw-bg);
+    --tab-container-background: var(--sw-surface);
+    --status-bar-background: var(--sw-surface);
+
+    --code-background: var(--sw-border);
+    --code-normal: var(--sw-text);
+
+    --graph-node: var(--sw-subtle);
+    --graph-node-unresolved: var(--sw-border-strong);
+    --graph-node-focused: var(--sw-accent-soft);
+    --graph-node-tag: #8fcfaa;
+    --graph-node-attachment: #b7a8ff;
+    --graph-line: var(--sw-border-strong);
+
+    --color-orange: var(--sw-accent-soft);
+    --color-green: #8fcfaa;
+}
+
+/* Green checkboxes vanish on the dark surfaces */
+body.theme-dark {
+    --checkbox-color: var(--sw-accent-soft);
+    --checkbox-color-hover: var(--sw-orange);
+    --checkbox-marker-color: var(--sw-bg);
+}
+
+/* Shared derived tokens */
+.theme-light,
+.theme-dark {
+    --link-color: var(--sw-link);
+    --link-color-hover: var(--text-accent-hover);
+    --link-external-color: var(--sw-link);
+    --link-external-color-hover: var(--text-accent-hover);
+    --link-unresolved-color: var(--sw-link);
+    --link-unresolved-opacity: 0.6;
+    --link-decoration: underline;
+    --link-decoration-hover: underline;
+    --link-external-decoration: underline;
+
+    --bold-color: var(--sw-text);
+    --heading-color: var(--sw-text);
+    --h1-color: var(--sw-text);
+    --h2-color: var(--sw-text);
+    --h3-color: var(--sw-heading-green);
+    --h4-color: var(--sw-ink-peach);
+    --h5-color: var(--sw-accent);
+    --h6-color: var(--sw-meta);
+
+    --list-marker-color: var(--sw-accent);
+    --list-marker-color-hover: var(--sw-accent);
+    --blockquote-color: var(--sw-text);
+    --hr-color: var(--sw-border);
+
+    --tag-background: var(--sw-tint-mint);
+    --tag-background-hover: var(--sw-tint-mint);
+    --tag-color: var(--sw-ink-mint);
+    --tag-color-hover: var(--sw-ink-mint);
+
+    --checkbox-color: var(--sw-green);
+    --checkbox-color-hover: var(--sw-green-2);
+    --checkbox-border-color: var(--sw-border-strong);
+    --checkbox-border-color-hover: var(--sw-orange);
+
+    --nav-item-background-active: var(--sw-nav-active-bg);
+    --nav-item-color-active: var(--sw-nav-active-fg);
+    --nav-item-background-hover: var(--background-modifier-hover);
+
+    --tab-background-active: var(--sw-green);
+    --tab-text-color-active: var(--sw-on-green-muted);
+    --tab-text-color-focused-active: #ffffff;
+    --tab-text-color-focused-active-current: #ffffff;
+    --tab-outline-color: transparent;
+}
+
+/* ---------- Base ---------- */
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Obsidian marks every control as no-drag, and Electron punches that hole
+   in the window-drag area even when the control has scrolled out of sight
+   under the tab bar (e.g. note properties). View content never sits in a
+   drag area, so its controls don't need it. (`initial`, not `none`:
+   Chromium computes an explicit `none` as no-drag.) */
+body.is-frameless .view-content,
+body.is-frameless .view-content * {
+    -webkit-app-region: initial;
+}
+
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-scroller {
+    color: var(--sw-body);
+}
+
+::selection {
+    background: var(--text-selection);
+}
+
+/* ---------- Headings ----------
+   Each level gets its own signature from the site:
+   h1 large light title over a hairline, h2 orange logo-mark,
+   h3 forest green, h4 peach chip, h5 accent with a dash, h6 eyebrow. */
+.inline-title,
+.markdown-rendered h1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1 {
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.markdown-rendered h1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--sw-border-strong);
+}
+
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 {
+    letter-spacing: -0.03em;
+}
+
+.markdown-rendered h2::before,
+.markdown-source-view.mod-cm6 .HyperMD-header-2::before {
+    content: "";
+    display: inline-block;
+    width: 0.62em;
+    height: 0.62em;
+    margin-inline-end: 0.42em;
+    border-radius: 0.2em;
+    background: var(--sw-orange);
+    vertical-align: 0.06em;
+}
+
+.markdown-rendered :is(h3, h4),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header-3, .HyperMD-header-4) {
+    letter-spacing: -0.02em;
+}
+
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4 .cm-header-4:not(.cm-formatting) {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding: 0.1em 0.55em;
+    border-radius: var(--sw-pill);
+    background: var(--sw-tint-peach);
+    color: var(--sw-ink-peach);
+}
+
+.markdown-rendered h4 {
+    display: table;
+}
+
+.markdown-rendered h5::before,
+.markdown-source-view.mod-cm6 .HyperMD-header-5::before {
+    content: "";
+    display: inline-block;
+    width: 0.9em;
+    height: 2px;
+    margin-inline-end: 0.45em;
+    border-radius: 2px;
+    background: currentColor;
+    vertical-align: 0.3em;
+}
+
+/* h6 = site "eyebrow" */
+.markdown-rendered h6,
+.markdown-source-view.mod-cm6 .HyperMD-header-6 {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Inside the green embed card, keep the markers but on-green colors */
+body:not(.sw-plain-embeds) .internal-embed.markdown-embed :is(h1, .HyperMD-header-1) {
+    border-bottom-color: var(--sw-green-2);
+}
+
+/* *Italic* inside a heading = display accent, like the site's split titles:
+   # Slow software. *Why patience ships better apps* */
+.markdown-rendered :is(h1, h2, h3) :is(em, i),
+.markdown-source-view.mod-cm6 .cm-header.cm-em:not(.cm-formatting) {
+    font-family: var(--sw-font-display-stack);
+    font-style: var(--sw-display-style);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--sw-accent);
+}
+
+/* ---------- Links ---------- */
+.markdown-rendered a,
+.markdown-source-view.mod-cm6 :is(.cm-hmd-internal-link, .cm-link, .cm-url) {
+    text-decoration-thickness: 0.07em;
+    text-underline-offset: 0.18em;
+}
+
+.markdown-rendered a.tag,
+.markdown-rendered a.tag:hover {
+    text-decoration: none;
+}
+
+/* External links: a ↗ arrow in the link color instead of Obsidian's grey
+   icon. Drawn as a mask so it follows currentColor; inline-block keeps
+   it out of the underline. */
+body:not(.sw-link-native) .external-link {
+    padding-right: 0;
+    background-image: none;
+}
+
+/* In Live Preview the icon is a separate span that isn't link-colored */
+body:not(.sw-link-native) .markdown-source-view.mod-cm6 .external-link {
+    color: var(--link-external-color);
+}
+
+body:not(.sw-link-native, .sw-link-none) .external-link::after {
+    content: "";
+    display: inline-block;
+    width: 0.62em;
+    height: 0.62em;
+    margin-inline-start: 0.16em;
+    background-color: currentColor;
+    vertical-align: 0.32em;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7'/%3E%3Cpath d='M8 7h9v9'/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7'/%3E%3Cpath d='M8 7h9v9'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* ---------- Drop cap (reading view, opt-in) ---------- */
+.sw-dropcap .markdown-preview-section > .el-p:not(.el-p ~ .el-p) > p::first-letter {
+    float: left;
+    padding: 6px 10px 0 0;
+    font-family: var(--sw-font-display-stack);
+    font-size: 4.2em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0.8;
+    color: var(--sw-accent);
+}
+
+/* ---------- Blockquote: peach editorial quote ---------- */
+body:not(.sw-plain-quotes) .markdown-rendered blockquote {
+    margin: 1.6em 0;
+    padding: 20px 26px;
+    border: 0;
+    border-radius: var(--radius-xl);
+    background: var(--sw-tint-peach);
+    font-family: var(--sw-font-display-stack);
+    font-style: var(--sw-display-style);
+    font-size: 1.3em;
+    line-height: 1.3;
+    color: var(--sw-text);
+}
+
+body:not(.sw-plain-quotes) .markdown-rendered blockquote > :first-child {
+    margin-top: 0;
+}
+
+body:not(.sw-plain-quotes) .markdown-rendered blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+/* CodeMirror sets the line's padding inline (hanging indent), so the
+   background is widened with side shadows instead of padding. */
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote {
+    background: var(--sw-tint-peach);
+    box-shadow: -22px 0 0 var(--sw-tint-peach), 22px 0 0 var(--sw-tint-peach);
+    font-family: var(--sw-font-display-stack);
+    font-style: var(--sw-display-style);
+    font-size: 1.2em;
+    line-height: 1.35;
+    color: var(--sw-text);
+}
+
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote::before {
+    display: none;
+}
+
+/* Breathing room outside the box, on the neighbouring lines
+   (padding, not margin: CodeMirror doesn't measure line margins) */
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-quote):has(+ .HyperMD-quote) {
+    padding-bottom: 16px;
+}
+
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) + .cm-line:not(.HyperMD-quote) {
+    padding-top: 16px;
+}
+
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(.HyperMD-quote + .HyperMD-quote) {
+    padding-top: 14px;
+    border-top-left-radius: var(--radius-xl);
+    border-top-right-radius: var(--radius-xl);
+}
+
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) {
+    padding-bottom: 14px;
+    border-bottom-left-radius: var(--radius-xl);
+    border-bottom-right-radius: var(--radius-xl);
+}
+
+.sw-plain-quotes {
+    --blockquote-border-thickness: 2px;
+    --blockquote-border-color: var(--sw-orange);
+}
+
+/* ---------- Callouts: site tints ---------- */
+body .callout {
+    --sw-callout-bg: var(--sw-tint-blue);
+    --sw-callout-fg: var(--sw-ink-blue);
+    border: 0;
+    background: var(--sw-callout-bg);
+    mix-blend-mode: normal;
+}
+
+body .callout .callout-title,
+body .callout .callout-icon {
+    color: var(--sw-callout-fg);
+}
+
+body .callout .callout-icon .svg-icon {
+    color: var(--sw-callout-fg);
+}
+
+body .callout .callout-content {
+    color: var(--sw-body);
+}
+
+.callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"]) {
+    --sw-callout-bg: var(--sw-tint-mint);
+    --sw-callout-fg: var(--sw-ink-mint);
+}
+
+.callout:is([data-callout="warning"], [data-callout="caution"], [data-callout="attention"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"]) {
+    --sw-callout-bg: var(--sw-tint-peach);
+    --sw-callout-fg: var(--sw-ink-peach);
+}
+
+.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) {
+    --sw-callout-bg: var(--sw-tint-lavender);
+    --sw-callout-fg: var(--sw-ink-lavender);
+}
+
+.callout:is([data-callout="quote"], [data-callout="cite"], [data-callout="example"]) {
+    --sw-callout-bg: var(--sw-tint-yellow);
+    --sw-callout-fg: var(--sw-ink-yellow);
+}
+
+/* ---------- Code ---------- */
+.markdown-rendered pre,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+.markdown-source-view.mod-cm6 .cm-embed-block pre {
+    --code-background: var(--sw-pre-bg);
+    --code-normal: var(--sw-code-normal);
+    --code-comment: var(--sw-code-comment);
+    --code-function: var(--sw-code-function);
+    --code-important: var(--sw-code-important);
+    --code-keyword: var(--sw-code-keyword);
+    --code-operator: var(--sw-code-operator);
+    --code-property: var(--sw-code-property);
+    --code-punctuation: var(--sw-code-punctuation);
+    --code-string: var(--sw-code-string);
+    --code-tag: var(--sw-code-tag);
+    --code-value: var(--sw-code-value);
+    --text-muted: #ada595;
+    --text-faint: #8e8676;
+    --background-modifier-hover: rgba(244, 239, 230, 0.08);
+    --text-selection: rgba(255, 138, 99, 0.3);
+}
+
+.markdown-rendered pre {
+    padding: 18px 22px;
+}
+
+.markdown-rendered :not(pre) > code,
+.markdown-source-view.mod-cm6 .cm-inline-code {
+    border-radius: var(--radius-s);
+    font-size: 0.85em;
+}
+
+/* ---------- Bullet journal signifiers ----------
+   The character between the brackets picks the symbol:
+   [ ] task, [x] done, [*] event, [n] note, [>] migrated, [<] scheduled,
+   [!] important (an unchecked task has data-task="" in reading view).
+   Symbols and colors come from Style Settings. Reading view
+   puts data-task on the <li> (checkbox is a direct child, or inside <p> in
+   loose lists); Live Preview puts it on the .HyperMD-task-line. */
+body.sw-bujo :is(li, .HyperMD-task-line):is([data-task=""], [data-task=" "]) {
+    --sw-bujo-glyph: var(--sw-bujo-todo-glyph, "•");
+    --sw-bujo-color: var(--sw-bujo-todo-color, var(--sw-text));
+}
+
+body.sw-bujo :is(li, .HyperMD-task-line):is([data-task="x"], [data-task="X"]) {
+    --sw-bujo-glyph: var(--sw-bujo-done-glyph, "×");
+    --sw-bujo-color: var(--sw-bujo-done-color, var(--sw-subtle));
+}
+
+body.sw-bujo :is(li, .HyperMD-task-line)[data-task="*"] {
+    --sw-bujo-glyph: var(--sw-bujo-event-glyph, "✱");
+    --sw-bujo-color: var(--sw-bujo-event-color, var(--sw-accent));
+}
+
+body.sw-bujo :is(li, .HyperMD-task-line)[data-task="n"] {
+    --sw-bujo-glyph: var(--sw-bujo-note-glyph, "■");
+    --sw-bujo-color: var(--sw-bujo-note-color, var(--sw-heading-green));
+}
+
+body.sw-bujo :is(li, .HyperMD-task-line)[data-task=">"] {
+    --sw-bujo-glyph: var(--sw-bujo-migrated-glyph, "›");
+    --sw-bujo-color: var(--sw-bujo-migrated-color, var(--sw-subtle));
+}
+
+body.sw-bujo :is(li, .HyperMD-task-line)[data-task="<"] {
+    --sw-bujo-glyph: var(--sw-bujo-scheduled-glyph, "‹");
+    --sw-bujo-color: var(--sw-bujo-scheduled-color, var(--sw-subtle));
+}
+
+body.sw-bujo :is(li, .HyperMD-task-line)[data-task="!"] {
+    --sw-bujo-glyph: var(--sw-bujo-important-glyph, "!");
+    --sw-bujo-color: var(--sw-bujo-important-color, var(--sw-ink-peach));
+}
+
+body.sw-bujo li:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"], [data-task="*"], [data-task="n"], [data-task=">"], [data-task="<"], [data-task="!"]) > input.task-list-item-checkbox,
+body.sw-bujo li:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"], [data-task="*"], [data-task="n"], [data-task=">"], [data-task="<"], [data-task="!"]) > p > input.task-list-item-checkbox,
+body.sw-bujo .HyperMD-task-line:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"], [data-task="*"], [data-task="n"], [data-task=">"], [data-task="<"], [data-task="!"]) .task-list-item-checkbox {
+    position: relative;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    font-size: inherit;
+}
+
+body.sw-bujo li:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"], [data-task="*"], [data-task="n"], [data-task=">"], [data-task="<"], [data-task="!"]) > input.task-list-item-checkbox::after,
+body.sw-bujo li:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"], [data-task="*"], [data-task="n"], [data-task=">"], [data-task="<"], [data-task="!"]) > p > input.task-list-item-checkbox::after,
+body.sw-bujo .HyperMD-task-line:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"], [data-task="*"], [data-task="n"], [data-task=">"], [data-task="<"], [data-task="!"]) .task-list-item-checkbox::after {
+    content: var(--sw-bujo-glyph);
+    position: absolute;
+    inset: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-mask-image: none;
+    mask-image: none;
+    background: none;
+    font-family: var(--font-text);
+    font-size: var(--sw-bujo-size, 1.1em);
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1;
+    color: var(--sw-bujo-color);
+}
+
+/* Important: the symbol sits on a small peach disc */
+body.sw-bujo li[data-task="!"] > input.task-list-item-checkbox::after,
+body.sw-bujo li[data-task="!"] > p > input.task-list-item-checkbox::after,
+body.sw-bujo .HyperMD-task-line[data-task="!"] .task-list-item-checkbox::after {
+    border-radius: 50%;
+    background: var(--sw-tint-peach);
+    font-size: calc(var(--sw-bujo-size, 1.1em) * 0.75);
+}
+
+body.sw-bujo :is(li, .HyperMD-task-line):is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"], [data-task="*"], [data-task="n"], [data-task=">"], [data-task="<"], [data-task="!"]) .task-list-item-checkbox:hover::after {
+    opacity: 0.7;
+}
+
+/* Events and notes aren't tasks: a click would turn them back into [ ] */
+body.sw-bujo li:is([data-task="*"], [data-task="n"]) > input.task-list-item-checkbox,
+body.sw-bujo li:is([data-task="*"], [data-task="n"]) > p > input.task-list-item-checkbox,
+body.sw-bujo .HyperMD-task-line:is([data-task="*"], [data-task="n"]) .task-list-item-checkbox {
+    pointer-events: none;
+}
+
+/* Only [x] reads as done; the other signifiers keep normal text */
+body.sw-bujo .markdown-rendered li:is([data-task="*"], [data-task="n"], [data-task="!"]),
+body.sw-bujo .markdown-source-view.mod-cm6 .HyperMD-task-line:is([data-task="*"], [data-task="n"], [data-task="!"]) {
+    color: var(--text-normal);
+    text-decoration: none;
+}
+
+body.sw-bujo .markdown-rendered li:is([data-task=">"], [data-task="<"]),
+body.sw-bujo .markdown-source-view.mod-cm6 .HyperMD-task-line:is([data-task=">"], [data-task="<"]) {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+/* ---------- Tags ---------- */
+.markdown-source-view.mod-cm6 .cm-hashtag,
+.markdown-rendered a.tag {
+    letter-spacing: 0;
+}
+
+/* Property pills cycle through the topic tints */
+.metadata-container .multi-select-pill {
+    --sw-pill-bg: var(--sw-tint-mint);
+    --sw-pill-fg: var(--sw-ink-mint);
+    border-radius: var(--sw-pill);
+    background: var(--sw-pill-bg);
+    color: var(--sw-pill-fg);
+    font-weight: 600;
+}
+
+.metadata-container .multi-select-pill .multi-select-pill-content,
+.metadata-container .multi-select-pill .multi-select-pill-remove-button {
+    color: var(--sw-pill-fg);
+}
+
+.metadata-container .multi-select-pill:nth-child(5n + 2) {
+    --sw-pill-bg: var(--sw-tint-lavender);
+    --sw-pill-fg: var(--sw-ink-lavender);
+}
+
+.metadata-container .multi-select-pill:nth-child(5n + 3) {
+    --sw-pill-bg: var(--sw-tint-peach);
+    --sw-pill-fg: var(--sw-ink-peach);
+}
+
+.metadata-container .multi-select-pill:nth-child(5n + 4) {
+    --sw-pill-bg: var(--sw-tint-blue);
+    --sw-pill-fg: var(--sw-ink-blue);
+}
+
+.metadata-container .multi-select-pill:nth-child(5n + 5) {
+    --sw-pill-bg: var(--sw-tint-yellow);
+    --sw-pill-fg: var(--sw-ink-yellow);
+}
+
+/* ---------- Embeds: dark-green featured card ---------- */
+body:not(.sw-plain-embeds) .internal-embed.markdown-embed {
+    --background-primary: var(--sw-green);
+    --text-normal: var(--sw-on-green);
+    --text-muted: var(--sw-on-green-muted);
+    --text-faint: #8faf9c;
+    --sw-text: var(--sw-on-green);
+    --sw-body: var(--sw-on-green);
+    --sw-link: var(--sw-accent-soft);
+    --sw-accent: var(--sw-accent-soft);
+    --link-color: var(--sw-accent-soft);
+    --link-external-color: var(--sw-accent-soft);
+    --text-accent: var(--sw-accent-soft);
+    --heading-color: var(--sw-on-green);
+    --h1-color: var(--sw-on-green);
+    --h2-color: var(--sw-on-green);
+    --h3-color: var(--sw-on-green);
+    --h4-color: var(--sw-ink-peach);
+    --h5-color: var(--sw-accent-soft);
+    --bold-color: var(--sw-on-green);
+    --code-background: var(--sw-green-2);
+    --code-normal: var(--sw-on-green);
+    --background-modifier-border: var(--sw-green-2);
+    --background-modifier-hover: rgba(251, 247, 240, 0.08);
+    margin: 1em 0;
+    padding: 18px 22px;
+    border: 0;
+    border-radius: 24px;
+    background: var(--sw-green);
+    color: var(--sw-on-green);
+}
+
+body:not(.sw-plain-embeds) .internal-embed.markdown-embed .markdown-embed-title {
+    color: var(--sw-on-green);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+}
+
+.sw-plain-embeds .internal-embed.markdown-embed {
+    padding: 4px 18px;
+    border: 1px solid var(--sw-border);
+    border-radius: var(--radius-l);
+}
+
+/* ---------- Tables, hr, highlights ---------- */
+.markdown-rendered table {
+    border-collapse: collapse;
+}
+
+.markdown-rendered :is(th, td) {
+    border-inline: 0;
+    border-top: 0;
+    border-bottom: 1px solid var(--sw-border);
+}
+
+.markdown-rendered th {
+    font-weight: 600;
+    color: var(--sw-text);
+}
+
+.markdown-rendered mark,
+.markdown-source-view.mod-cm6 .cm-highlight {
+    border-radius: 4px;
+    color: var(--sw-text);
+}
+
+/* ---------- Images ---------- */
+.markdown-rendered img:not([width]),
+.markdown-source-view.mod-cm6 .image-embed img {
+    border-radius: var(--radius-xl);
+}
+
+/* ---------- Tabs: pill nav ---------- */
+.workspace .mod-root .workspace-tab-header-container {
+    padding-inline-end: 8px;
+    border-bottom: 1px solid var(--sw-border);
+    background: var(--background-primary);
+}
+
+.workspace .mod-root .workspace-tab-header-container-inner {
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    padding: 6px 10px;
+}
+
+.workspace .mod-root .workspace-tab-header {
+    height: 30px;
+    border-radius: var(--sw-pill);
+    background: transparent;
+}
+
+.workspace .mod-root .workspace-tab-header.is-active {
+    border-radius: var(--sw-pill);
+    background: var(--sw-green);
+    box-shadow: none;
+}
+
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover {
+    background: var(--background-modifier-hover);
+}
+
+.workspace .mod-root .workspace-tab-header::before,
+.workspace .mod-root .workspace-tab-header::after,
+.workspace .mod-root .workspace-tab-header-inner::after {
+    display: none;
+}
+
+.workspace .mod-root .workspace-tab-header.is-active :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button) {
+    color: #ffffff;
+}
+
+.workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- File explorer & sidebars ---------- */
+.nav-folder.mod-root > .nav-folder-title {
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sw-subtle);
+}
+
+.tree-item-self.is-active,
+.nav-file-title.is-active,
+.nav-folder-title.is-active {
+    border-radius: var(--sw-pill);
+}
+
+body:not(.is-grabbing) .tree-item-self:hover,
+body:not(.is-grabbing) .nav-file-title:hover,
+body:not(.is-grabbing) .nav-folder-title:hover {
+    border-radius: var(--sw-pill);
+}
+
+.tree-item-self.is-active .tree-item-icon,
+.nav-file-title.is-active .nav-file-tag {
+    color: var(--sw-nav-active-fg);
+}
+
+/* Outline = site "On this page" */
+.workspace-leaf-content[data-type="outline"] {
+    --nav-indentation-guide-color: transparent;
+}
+
+.workspace-leaf-content[data-type="outline"] .tree-item-self {
+    border-left: 2px solid var(--sw-border);
+    border-radius: 0;
+    color: var(--sw-meta);
+}
+
+body:not(.is-grabbing) .workspace-leaf-content[data-type="outline"] .tree-item-self:hover,
+.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active {
+    border-left-color: var(--sw-orange);
+    border-radius: 0;
+    background: transparent;
+    color: var(--sw-text);
+}
+
+/* Search & backlink results as tinted cards */
+.search-result-file-matches {
+    border-radius: var(--radius-m);
+}
+
+.search-input-container input {
+    border-radius: var(--sw-pill);
+    padding-inline-start: 32px;
+}
+
+/* ---------- Buttons, inputs, menus, modals ---------- */
+button:not(.clickable-icon) {
+    border-radius: var(--sw-pill);
+    font-weight: 600;
+}
+
+button.mod-cta {
+    background: var(--sw-ink);
+    color: var(--sw-on-ink);
+}
+
+button.mod-cta:hover {
+    background: var(--sw-green);
+    color: #ffffff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--sw-orange) 22%, transparent);
+}
+
+.menu,
+.suggestion-container {
+    border-radius: var(--radius-l);
+}
+
+.menu .menu-item,
+.suggestion-item {
+    border-radius: var(--radius-m);
+}
+
+.prompt,
+.modal {
+    border-radius: var(--radius-xl);
+}
+
+.prompt-input-container input {
+    font-size: 1.1em;
+}
+
+.suggestion-item.is-selected {
+    background: var(--background-modifier-active-hover);
+}
+
+.status-bar {
+    border-top-left-radius: var(--radius-l);
+}
+
+/* ---------- Floating cards layout (dark by default, desktop only) ---------- */
+body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile),
+body.sw-cards-always:not(.is-mobile) {
+    --sw-card-gap: 6px;
+    --background-primary: var(--sw-surface);
+    --background-secondary: var(--sw-surface);
+    --tab-container-background: var(--sw-surface);
+    --ribbon-background: var(--sw-canvas);
+    --ribbon-background-collapsed: var(--sw-canvas);
+    --titlebar-background: var(--sw-canvas);
+    --titlebar-background-focused: var(--sw-canvas);
+    --divider-color: transparent;
+    --status-bar-background: var(--sw-surface);
+    --status-bar-border-color: transparent;
+}
+
+body.theme-light.sw-cards-always {
+    --background-primary: var(--sw-surface);
+    --sw-canvas: var(--sw-bg);
+}
+
+:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) :is(.app-container, .horizontal-main-container, .workspace, .workspace-split, .workspace-ribbon) {
+    background-color: var(--sw-canvas);
+}
+
+:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-ribbon {
+    border: 0;
+}
+
+:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-tabs:not(.mod-stacked) {
+    margin: var(--sw-card-gap);
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: var(--sw-surface);
+}
+
+:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-split.mod-sidedock {
+    border: 0;
+}
+
+:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace .mod-root .workspace-tab-header-container {
+    border-bottom: 0;
+}
+
+:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .status-bar {
+    bottom: calc(var(--sw-card-gap) * 2);
+    right: calc(var(--sw-card-gap) * 2);
+    border: 0;
+    border-radius: var(--sw-pill);
+}
+
+/* ---------- Light variant: Forest ----------
+   Same cream editor, but the ribbon and sidebars take the site's
+   dark-green "featured card" surface; tabs are underlined in orange. */
+body.theme-light.sw-light-forest {
+    --sw-forest-deep: #17301f;
+    --sw-forest-line: #355a47;
+    --ribbon-background: var(--sw-forest-deep);
+    --ribbon-background-collapsed: var(--sw-forest-deep);
+    --titlebar-background: var(--sw-forest-deep);
+    --titlebar-background-focused: var(--sw-forest-deep);
+}
+
+body.theme-light.sw-light-forest :is(.workspace-split.mod-sidedock, .workspace-ribbon, .workspace-drawer) {
+    --sw-surface: var(--sw-green);
+    --sw-text: var(--sw-on-green);
+    --sw-body: var(--sw-on-green);
+    --sw-meta: var(--sw-on-green-muted);
+    --sw-muted: var(--sw-on-green-muted);
+    --sw-subtle: #8faf9c;
+    --sw-border: var(--sw-green-2);
+    --sw-border-strong: var(--sw-forest-line);
+    --sw-link: var(--sw-accent-soft);
+    --sw-accent: var(--sw-accent-soft);
+    --sw-nav-active-fg: #1b1a17;
+
+    --background-primary: var(--sw-forest-deep);
+    --background-primary-alt: var(--sw-forest-deep);
+    --background-secondary: var(--sw-green);
+    --background-secondary-alt: var(--sw-forest-deep);
+    --background-modifier-border: var(--sw-green-2);
+    --background-modifier-border-hover: var(--sw-forest-line);
+    --background-modifier-border-focus: var(--sw-accent-soft);
+    --background-modifier-hover: rgba(251, 247, 240, 0.08);
+    --background-modifier-active-hover: rgba(255, 138, 99, 0.16);
+    --background-modifier-form-field: var(--sw-forest-deep);
+    --divider-color: var(--sw-forest-deep);
+    --tab-container-background: var(--sw-green);
+    --mobile-sidebar-background: var(--sw-green);
+    --raised-background: var(--sw-green-2);
+    --interactive-normal: var(--sw-green-2);
+    --interactive-hover: var(--sw-forest-line);
+
+    --text-normal: var(--sw-on-green);
+    --text-muted: var(--sw-on-green-muted);
+    --text-faint: #8faf9c;
+    --text-accent: var(--sw-accent-soft);
+    --text-accent-hover: var(--sw-on-green);
+    --text-selection: rgba(255, 138, 99, 0.3);
+    --text-highlight-bg: rgba(255, 241, 168, 0.25);
+    --link-color: var(--sw-accent-soft);
+    --link-color-hover: var(--sw-on-green);
+    --link-external-color: var(--sw-accent-soft);
+    --link-unresolved-color: var(--sw-accent-soft);
+
+    --icon-color: var(--sw-on-green-muted);
+    --icon-color-hover: var(--sw-on-green);
+    --icon-color-focused: var(--sw-on-green);
+    --icon-color-active: var(--sw-accent-soft);
+
+    --nav-item-color: var(--sw-on-green-muted);
+    --nav-item-color-hover: var(--sw-on-green);
+    --nav-item-color-active: #1b1a17;
+    --nav-item-background-active: var(--sw-orange);
+    --nav-item-background-hover: rgba(251, 247, 240, 0.08);
+    --nav-collapse-icon-color: #8faf9c;
+    --nav-collapse-icon-color-collapsed: #8faf9c;
+    --nav-indentation-guide-color: rgba(201, 216, 206, 0.18);
+    --nav-item-color-selected: var(--sw-on-green);
+    --nav-item-background-selected: rgba(255, 138, 99, 0.22);
+    --nav-item-color-highlighted: var(--sw-accent-soft);
+    --nav-heading-color: var(--sw-on-green);
+    --nav-heading-color-hover: var(--sw-on-green);
+    --nav-heading-color-collapsed: var(--sw-on-green-muted);
+    --nav-heading-color-collapsed-hover: var(--sw-on-green);
+    --vault-profile-color: var(--sw-on-green);
+    --vault-profile-color-hover: var(--sw-on-green);
+
+    /* Obsidian resolves these on body, so they're restated here */
+    --tab-background-active: rgba(251, 247, 240, 0.1);
+    --tab-text-color: var(--sw-on-green-muted);
+    --tab-text-color-focused: var(--sw-on-green-muted);
+    --tab-text-color-active: var(--sw-on-green);
+    --tab-text-color-focused-active: var(--sw-on-green);
+    --tab-text-color-focused-active-current: var(--sw-on-green);
+    --tab-text-color-focused-highlighted: var(--sw-accent-soft);
+    --metadata-label-text-color: var(--sw-on-green-muted);
+    --metadata-input-text-color: var(--sw-on-green);
+    --search-result-background: var(--sw-forest-deep);
+
+    --tag-background: var(--sw-green-2);
+    --tag-background-hover: var(--sw-forest-line);
+    --tag-color: var(--sw-on-green);
+    --tag-color-hover: var(--sw-on-green);
+    --checkbox-color: var(--sw-accent-soft);
+    --checkbox-marker-color: var(--sw-forest-deep);
+    --scrollbar-thumb-bg: rgba(251, 247, 240, 0.16);
+    --scrollbar-active-thumb-bg: rgba(251, 247, 240, 0.28);
+
+    color: var(--text-normal);
+}
+
+body.theme-light.sw-light-forest .workspace-ribbon {
+    border-color: var(--sw-forest-deep);
+}
+
+/* Tabs: classic tabs on a sand bar, active one underlined in orange */
+body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header-container {
+    background: var(--sw-bg-2);
+}
+
+body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header-container-inner {
+    align-items: stretch;
+    gap: 2px;
+    padding: 6px 8px 0;
+}
+
+body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header {
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active {
+    margin-bottom: -1px;
+    border-radius: 10px 10px 0 0;
+    background: var(--sw-bg);
+    box-shadow: inset 0 3px 0 var(--sw-orange);
+}
+
+body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button) {
+    color: var(--sw-text);
+}
+
+body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    font-weight: 600;
+}
+
+body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* ---------- Mobile ---------- */
+.is-phone {
+    --inline-title-size: 2em;
+    --h1-size: 1.85em;
+    --h2-size: 1.45em;
+    --h3-size: 1.22em;
+    --h4-size: 1.06em;
+    --h5-size: 1em;
+    --h6-size: 0.78em;
+    --file-line-width: 100%;
+}
+
+body.is-phone:not(.sw-plain-quotes) .markdown-rendered blockquote {
+    padding: 16px 18px;
+    font-size: 1.15em;
+}
+
+body.is-phone:not(.sw-plain-embeds) .internal-embed.markdown-embed {
+    padding: 14px 16px;
+    border-radius: var(--radius-xl);
+}
