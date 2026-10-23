@@ -17,7 +17,7 @@ A warm, editorial theme for [Obsidian](https://obsidian.md): cream paper, ink-da
 - **Callouts.** Tinted by type: note in blue, tip in mint, warning in peach, question in lavender, quote in yellow.
 - **Quotes, code and embeds.** Peach blockquotes in the display serif, dark code blocks in iA Writer Duo, and embedded notes shown as a dark green card. Plain alternatives are available in the settings.
 - **Bullet journal signifiers** for tasks (see below).
-- **Two font pairings**, both bundled, so no network access is needed. The theme file is about 380 KB.
+- **Two font pairings**, both bundled, so no network access is needed. The fonts are subset to Latin characters, which keeps the theme file to about 210 KB; text in other scripts falls back to your system fonts.
 - **Mobile-friendly.** Heading sizes scale down on phones.
 
 ## Install
@@ -97,4 +97,4 @@ See [RELEASING.md](RELEASING.md). In short: bump `version` in `manifest.json`, r
 
 The theme is released under the [MIT Licence](LICENSE). It includes the original copyright of Stéphane Sulikowski and the copyright of the paper-lite changes.
 
-The bundled fonts are licensed under the SIL Open Font Licence 1.1. See [fonts/OFL.txt](fonts/OFL.txt) for their copyright notices: Outfit, Newsreader (fixed at weight 400 to save space), Manrope, Instrument Serif, and iA Writer Duo (Regular).
+The bundled fonts are licensed under the SIL Open Font Licence 1.1. See [fonts/OFL.txt](fonts/OFL.txt) for their copyright notices: Outfit, Newsreader, Manrope, Instrument Serif, and iA Writer Duo (Regular). They are subset to Latin characters to save space; see [fonts/OFL.txt](fonts/OFL.txt) for the changes.

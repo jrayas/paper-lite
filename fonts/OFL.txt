@@ -5,8 +5,9 @@ All fonts below are licensed under the SIL Open Font License, Version 1.1,
 reproduced in full at the end of this file. The Google Fonts files are the
 latin subsets served by Google Fonts; the iA Writer Duo files are the
 unmodified webfonts from https://github.com/iaolo/iA-Fonts (Regular weight only).
-Newsreader has been modified: the variable font is fixed at weight 400 (the optical
-size axis is kept) to reduce file size.
+All embedded fonts have been modified to reduce file size: they are subset to Latin
+characters (Basic Latin, Latin-1 and common punctuation), Outfit and Manrope are limited
+to weights 300 to 700, and Newsreader is fixed at weight 400 and optical size 24.
 
 Outfit
 Copyright 2021 The Outfit Project Authors (https://github.com/Outfitio/Outfit-Fonts)
