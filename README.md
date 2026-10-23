@@ -8,9 +8,9 @@ A warm, editorial theme for [Obsidian](https://obsidian.md), based on the design
 
 ## Features
 
-- **Two light variants.** *Cream* (white sidebars, pill tabs) and *Forest* (deep green ribbon and sidebars, orange-underlined tabs).
+- **Two light variants.** *Cream* (white sidebars, warm sand pill tabs and selected rows with a small orange dot) and *Forest* (deep green ribbon and sidebars, orange-underlined tabs).
 - **Dark mode with floating cards.** Rounded panes float on a near-black canvas (desktop only).
-- **Editorial headings.** Each level has its own look: a large light H1 over a hairline, an orange mark before H2, forest green H3, a peach chip for H4, an orange dash for H5, and small caps for H6.
+- **One heading system.** Every level uses the same ink colour and typeface, and the hierarchy comes from size and weight: a large light H1 over a hairline, semi-bold H2 to H4, muted H5, and small-caps H6. Orange is kept for interaction, such as the fold chevron in the margin (always visible on a folded heading).
 - **Accent titles.** Italic text inside a heading is set in the display serif, in orange:
   `# Slow software. *Why patience ships better apps*`
 - **Tinted callouts.** Note in blue, tip in mint, warning in peach, question in lavender, quote in yellow.

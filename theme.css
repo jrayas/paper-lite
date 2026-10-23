@@ -416,8 +416,11 @@ body.theme-dark.sw-df-e {
     --sw-ink-blue: #0c447c;
     --sw-ink-yellow: #5c4a05;
 
-    --sw-nav-active-bg: var(--sw-green);
-    --sw-nav-active-fg: #ffffff;
+    /* Warm sand pill for the active tab and the selected file row */
+    --sw-tab-active-bg: #eadfca;
+    --sw-tab-active-fg: var(--sw-text);
+    --sw-nav-active-bg: var(--sw-tab-active-bg);
+    --sw-nav-active-fg: var(--sw-text);
     --sw-heading-green: var(--sw-green);
 
     --accent-h: 13;
@@ -500,6 +503,8 @@ body.theme-dark.sw-df-e {
     --sw-ink-blue: #d6e6ff;
     --sw-ink-yellow: #fff1a8;
 
+    --sw-tab-active-bg: var(--sw-border-strong);
+    --sw-tab-active-fg: var(--sw-text);
     --sw-nav-active-bg: var(--sw-ink);
     --sw-nav-active-fg: var(--sw-on-ink);
     --sw-heading-green: #8fcfaa;
@@ -579,9 +584,9 @@ body.theme-dark {
     --heading-color: var(--sw-text);
     --h1-color: var(--sw-text);
     --h2-color: var(--sw-text);
-    --h3-color: var(--sw-heading-green);
-    --h4-color: var(--sw-ink-peach);
-    --h5-color: var(--sw-accent);
+    --h3-color: var(--sw-text);
+    --h4-color: var(--sw-text);
+    --h5-color: var(--sw-meta);
     --h6-color: var(--sw-meta);
 
     --list-marker-color: var(--sw-accent);
@@ -603,10 +608,10 @@ body.theme-dark {
     --nav-item-color-active: var(--sw-nav-active-fg);
     --nav-item-background-hover: var(--background-modifier-hover);
 
-    --tab-background-active: var(--sw-green);
-    --tab-text-color-active: var(--sw-on-green-muted);
-    --tab-text-color-focused-active: #ffffff;
-    --tab-text-color-focused-active-current: #ffffff;
+    --tab-background-active: var(--sw-tab-active-bg);
+    --tab-text-color-active: var(--sw-tab-active-fg);
+    --tab-text-color-focused-active: var(--sw-tab-active-fg);
+    --tab-text-color-focused-active-current: var(--sw-tab-active-fg);
     --tab-outline-color: transparent;
 }
 
@@ -635,9 +640,10 @@ body.is-frameless .view-content * {
 }
 
 /* ---------- Headings ----------
-   Each level gets its own signature from the site:
-   h1 large light title over a hairline, h2 orange logo-mark,
-   h3 forest green, h4 peach chip, h5 accent with a dash, h6 eyebrow. */
+   One system: every level is set in the same ink colour and typeface, and the
+   hierarchy comes from size and weight alone (see --h1-size ... --h6-weight).
+   h1 sits over a hairline, h5 and h6 are muted, h6 is a small-caps eyebrow.
+   Orange is reserved for interaction, such as the fold chevron below. */
 .inline-title,
 .markdown-rendered h1,
 .markdown-source-view.mod-cm6 .HyperMD-header-1 {
@@ -656,57 +662,33 @@ body.is-frameless .view-content * {
     letter-spacing: -0.03em;
 }
 
-.markdown-rendered h2::before,
-.markdown-source-view.mod-cm6 .HyperMD-header-2::before {
-    content: "";
-    display: inline-block;
-    width: 0.62em;
-    height: 0.62em;
-    margin-inline-end: 0.42em;
-    border-radius: 0.2em;
-    background: var(--sw-orange);
-    vertical-align: 0.06em;
-}
-
 .markdown-rendered :is(h3, h4),
 .markdown-source-view.mod-cm6 :is(.HyperMD-header-3, .HyperMD-header-4) {
     letter-spacing: -0.02em;
 }
 
-.markdown-rendered h4,
-.markdown-source-view.mod-cm6 .HyperMD-header-4 .cm-header-4:not(.cm-formatting) {
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    padding: 0.1em 0.55em;
-    border-radius: var(--sw-pill);
-    background: var(--sw-tint-peach);
-    color: var(--sw-ink-peach);
-}
-
-.markdown-rendered h4 {
-    display: table;
-}
-
-.markdown-rendered h5::before,
-.markdown-source-view.mod-cm6 .HyperMD-header-5::before {
-    content: "";
-    display: inline-block;
-    width: 0.9em;
-    height: 2px;
-    margin-inline-end: 0.45em;
-    border-radius: 2px;
-    background: currentColor;
-    vertical-align: 0.3em;
-}
-
-/* h6 = site "eyebrow" */
+/* h6 = small-caps eyebrow */
 .markdown-rendered h6,
 .markdown-source-view.mod-cm6 .HyperMD-header-6 {
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
-/* Inside the green embed card, keep the markers but on-green colors */
+/* Fold chevron: Obsidian's own, in the left margin, coloured orange.
+   A folded heading keeps it visible as its cue; otherwise it shows on hover.
+   Obsidian colours it through .view-content .collapse-indicator svg.svg-icon
+   (and an .is-collapsed variant), which outrank a plain selector. */
+.markdown-source-view.mod-cm6 .HyperMD-header .collapse-indicator svg,
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) > .heading-collapse-indicator svg {
+    color: var(--sw-orange) !important;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-header .collapse-indicator.is-collapsed,
+.markdown-rendered :is(h1, h2, h3, h4, h5, h6) > .collapse-indicator.is-collapsed {
+    opacity: 1;
+}
+
+/* Inside the green embed card, the h1 rule takes the on-green colour */
 body:not(.sw-plain-embeds) .internal-embed.markdown-embed :is(h1, .HyperMD-header-1) {
     border-bottom-color: var(--sw-green-2);
 }
@@ -1077,8 +1059,8 @@ body:not(.sw-plain-embeds) .internal-embed.markdown-embed {
     --h1-color: var(--sw-on-green);
     --h2-color: var(--sw-on-green);
     --h3-color: var(--sw-on-green);
-    --h4-color: var(--sw-ink-peach);
-    --h5-color: var(--sw-accent-soft);
+    --h4-color: var(--sw-on-green);
+    --h5-color: var(--sw-on-green-muted);
     --bold-color: var(--sw-on-green);
     --code-background: var(--sw-green-2);
     --code-normal: var(--sw-on-green);
@@ -1154,8 +1136,8 @@ body:not(.sw-plain-embeds) .internal-embed.markdown-embed .markdown-embed-title 
 
 .workspace .mod-root .workspace-tab-header.is-active {
     border-radius: var(--sw-pill);
-    background: var(--sw-green);
-    box-shadow: none;
+    background: var(--sw-tab-active-bg);
+    box-shadow: inset 0 0 0 1px var(--sw-border-strong);
 }
 
 .workspace .mod-root .workspace-tab-header:not(.is-active):hover {
@@ -1169,11 +1151,23 @@ body:not(.sw-plain-embeds) .internal-embed.markdown-embed .markdown-embed-title 
 }
 
 .workspace .mod-root .workspace-tab-header.is-active :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button) {
-    color: #ffffff;
+    color: var(--sw-tab-active-fg);
 }
 
 .workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--background-modifier-hover);
+}
+
+/* Small orange dot marks the active tab (the Forest variant uses its own orange bar) */
+body:not(.sw-light-forest) .workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-inline-end: 6px;
+    border-radius: 50%;
+    background: var(--sw-orange);
+    vertical-align: 0.1em;
 }
 
 /* ---------- File explorer & sidebars ---------- */
