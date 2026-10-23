@@ -90,12 +90,6 @@ settings:
                 label: Obsidian default
                 value: sw-link-native
     -
-        id: sw-dropcap
-        title: Drop cap
-        description: First letter of the note in the display font, in reading view
-        type: class-toggle
-        default: false
-    -
         id: sw-plain-quotes
         title: Plain blockquotes
         description: Replaces the editorial quote (peach box, display font) with a classic blockquote
@@ -647,10 +641,11 @@ body.is-frameless .view-content * {
 /* Fold chevron: Obsidian's own, in the left margin, coloured orange.
    A folded heading keeps it visible as its cue; otherwise it shows on hover.
    Obsidian colours it through .view-content .collapse-indicator svg.svg-icon
-   (and an .is-collapsed variant), which outrank a plain selector. */
-.markdown-source-view.mod-cm6 .HyperMD-header .collapse-indicator svg,
-.markdown-rendered :is(h1, h2, h3, h4, h5, h6) > .heading-collapse-indicator svg {
-    color: var(--sw-orange) !important;
+   (and an .is-collapsed variant), so these selectors are written to out-rank it
+   without !important. */
+.view-content .markdown-source-view.mod-cm6 .HyperMD-header .collapse-indicator svg.svg-icon,
+.view-content .markdown-rendered :is(h1, h2, h3, h4, h5, h6) > .heading-collapse-indicator svg.svg-icon {
+    color: var(--sw-orange);
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-header .collapse-indicator.is-collapsed,
@@ -709,18 +704,6 @@ body:not(.sw-link-native, .sw-link-none) .external-link::after {
     vertical-align: 0.32em;
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7'/%3E%3Cpath d='M8 7h9v9'/%3E%3C/svg%3E") no-repeat center / contain;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7'/%3E%3Cpath d='M8 7h9v9'/%3E%3C/svg%3E") no-repeat center / contain;
-}
-
-/* ---------- Drop cap (reading view, opt-in) ---------- */
-.sw-dropcap .markdown-preview-section > .el-p:not(.el-p ~ .el-p) > p::first-letter {
-    float: left;
-    padding: 6px 10px 0 0;
-    font-family: var(--sw-font-display-stack);
-    font-size: 4.2em;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 0.8;
-    color: var(--sw-accent);
 }
 
 /* ---------- Blockquote: peach editorial quote ---------- */

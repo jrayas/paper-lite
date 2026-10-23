@@ -17,7 +17,7 @@ A warm, editorial theme for [Obsidian](https://obsidian.md): cream paper, ink-da
 - **Callouts.** Tinted by type: note in blue, tip in mint, warning in peach, question in lavender, quote in yellow.
 - **Quotes, code and embeds.** Peach blockquotes in the display serif, dark code blocks in iA Writer Duo, and embedded notes shown as a dark green card. Plain alternatives are available in the settings.
 - **Bullet journal signifiers** for tasks (see below).
-- **Two font pairings**, both bundled, so no network access is needed. The fonts are subset to Latin characters, which keeps the theme file to about 210 KB; text in other scripts falls back to your system fonts.
+- **Two font pairings**, both bundled, so no network access is needed. The fonts are subset to Latin characters, and only the italic display faces are included, which keeps the theme file to about 150 KB; text in other scripts falls back to your system fonts.
 - **Mobile-friendly.** Heading sizes scale down on phones.
 
 ## Install
@@ -46,7 +46,6 @@ Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings
 - **Side panels (light mode):** Flat (cream, the default) or Sand (one warm step darker than the editor).
 - **Floating cards:** never (the default, one continuous surface), dark mode only, or always. Cards are rounded panes with gaps between them.
 - **External link icon:** a ↗ arrow in the link colour, none, or Obsidian's default.
-- **Drop cap** in reading view.
 - **Plain blockquotes** and **plain embeds**, replacing the peach quote box and the dark green embed card.
 - **Bullet journal signifiers:** on or off, size, and a symbol and colour for each type.
 
