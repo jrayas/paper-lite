@@ -4,39 +4,6 @@ name: paper-lite
 id: paper-lite
 settings:
     -
-        id: sw-typography
-        title: Typography
-        type: heading
-        level: 2
-        collapsed: false
-    -
-        id: sw-light-font
-        title: Light mode fonts
-        description: Text × display pairing (heading accents and quotes)
-        type: class-select
-        allowEmpty: false
-        default: sw-lf-a
-        options:
-            -
-                label: A · Outfit × Newsreader
-                value: sw-lf-a
-            -
-                label: B · Manrope × Instrument Serif
-                value: sw-lf-b
-    -
-        id: sw-dark-font
-        title: Dark mode fonts
-        type: class-select
-        allowEmpty: false
-        default: sw-df-b
-        options:
-            -
-                label: A · Outfit × Newsreader
-                value: sw-df-a
-            -
-                label: B · Manrope × Instrument Serif
-                value: sw-df-b
-    -
         id: sw-layout
         title: Layout
         type: heading
@@ -238,7 +205,7 @@ body {
 
     --font-text-theme: var(--sw-font-sans), system-ui, -apple-system, sans-serif;
     --font-interface-theme: var(--sw-font-sans), system-ui, -apple-system, sans-serif;
-    --font-monospace-theme: "iA Writer Duo", ui-monospace, "SF Mono", Menlo, monospace;
+    --font-monospace-theme: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     --sw-font-display-stack: var(--sw-font-display), Georgia, "Times New Roman", serif;
 
     --sw-green: #1f3b2d;
@@ -319,27 +286,6 @@ body {
     --sw-code-string: #cdebd9;
     --sw-code-tag: #ff8a63;
     --sw-code-value: #e3daff;
-}
-
-/* ---------- Font pairings (same as suliworld.com) ---------- */
-body.theme-dark {
-    --sw-font-sans: "Manrope";
-    --sw-font-display: "Instrument Serif";
-    --sw-display-style: italic;
-}
-
-body.theme-light.sw-lf-a,
-body.theme-dark.sw-df-a {
-    --sw-font-sans: "Outfit";
-    --sw-font-display: "Newsreader";
-    --sw-display-style: italic;
-}
-
-body.theme-light.sw-lf-b,
-body.theme-dark.sw-df-b {
-    --sw-font-sans: "Manrope";
-    --sw-font-display: "Instrument Serif";
-    --sw-display-style: italic;
 }
 
 /* ---------- Light: Sand panels (opt-in "Side panels" setting) ---------- */
@@ -672,7 +618,6 @@ body:not(.sw-plain-embeds) .internal-embed.markdown-embed :is(h1, .HyperMD-heade
 /* ---------- Links ---------- */
 .markdown-rendered a,
 .markdown-source-view.mod-cm6 :is(.cm-hmd-internal-link, .cm-link, .cm-url) {
-    text-decoration-thickness: 0.07em;
     text-underline-offset: 0.18em;
 }
 
@@ -744,26 +689,29 @@ body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote::before 
     display: none;
 }
 
-/* Breathing room outside the box, on the neighbouring lines
-   (padding, not margin: CodeMirror doesn't measure line margins) */
-body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-quote):has(+ .HyperMD-quote) {
-    padding-bottom: 16px;
+/* The line after the quote carries the box's bottom cap: breathing room under the box,
+   and its rounded corners, drawn on that line because the quote's last line can't be
+   selected without :has(). (Padding, not margin: CodeMirror doesn't measure line margins.) */
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote + .cm-line:not(.HyperMD-quote) {
+    padding-top: 16px;
 }
 
-body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) + .cm-line:not(.HyperMD-quote) {
-    padding-top: 16px;
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote + .cm-line:not(.HyperMD-quote)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -22px;
+    left: -22px;
+    height: 14px;
+    border-bottom-right-radius: var(--radius-xl);
+    border-bottom-left-radius: var(--radius-xl);
+    background: var(--sw-tint-peach);
 }
 
 body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(.HyperMD-quote + .HyperMD-quote) {
     padding-top: 14px;
     border-top-left-radius: var(--radius-xl);
     border-top-right-radius: var(--radius-xl);
-}
-
-body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) {
-    padding-bottom: 14px;
-    border-bottom-left-radius: var(--radius-xl);
-    border-bottom-right-radius: var(--radius-xl);
 }
 
 .sw-plain-quotes {

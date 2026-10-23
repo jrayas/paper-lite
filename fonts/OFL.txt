@@ -1,30 +1,18 @@
 Fonts embedded in theme.css (from the fonts/ folder)
 =====================================================
 
-All fonts below are licensed under the SIL Open Font License, Version 1.1,
-reproduced in full at the end of this file. The Google Fonts files are the
-latin subsets served by Google Fonts; the iA Writer Duo files are the
-unmodified webfonts from https://github.com/iaolo/iA-Fonts (Regular weight only).
-All embedded fonts have been modified to reduce file size: they are subset to Latin
-characters (Basic Latin, Latin-1 and common punctuation), Outfit and Manrope are limited
-to weights 300 to 700, Newsreader and Instrument Serif are included in italic only, and Newsreader is fixed at
-weight 400 and optical size 24 with kerning removed.
+Both fonts below are licensed under the SIL Open Font License, Version 1.1,
+reproduced in full at the end of this file. The files are the latin subsets served by
+Google Fonts, modified further to reduce file size: they are subset to Latin characters
+(Basic Latin, Latin-1 and common punctuation), Outfit is limited to weights 300 to 700,
+and Newsreader is included in italic only, fixed at weight 400 and optical size 24, with
+kerning removed.
 
 Outfit
 Copyright 2021 The Outfit Project Authors (https://github.com/Outfitio/Outfit-Fonts)
 
 Newsreader
 Copyright 2020 The Newsreader Project Authors (http://github.com/productiontype/Newsreader)
-
-Manrope
-Copyright 2018 The Manrope Project Authors (https://github.com/googlefonts/manrope)
-
-Instrument Serif
-Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
-
-iA Writer Duo
-Copyright © 2018 Information Architects Inc. with Reserved Font Name "iA Writer"
-Based on IBM Plex Typeface, Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"
 
 -----------------------------------------------------------------------
 

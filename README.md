@@ -15,9 +15,9 @@ A warm, editorial theme for [Obsidian](https://obsidian.md): cream paper, ink-da
 - **One heading system.** Every level uses the same ink colour and typeface, and the hierarchy comes from size and weight: a large light H1 over a hairline, semi-bold H2 to H4, muted H5, and small-caps H6. Orange is kept for interaction, such as the fold chevron in the margin, which stays visible on a folded heading.
 - **Accent titles.** Italic text inside a heading is set in the display serif, in orange: `# Slow software. *Why patience ships better apps*`
 - **Callouts.** Tinted by type: note in blue, tip in mint, warning in peach, question in lavender, quote in yellow.
-- **Quotes, code and embeds.** Peach blockquotes in the display serif, dark code blocks in iA Writer Duo, and embedded notes shown as a dark green card. Plain alternatives are available in the settings.
+- **Quotes, code and embeds.** Peach blockquotes in the display serif, dark code blocks in your system's monospace font, and embedded notes shown as a dark green card. Plain alternatives are available in the settings.
 - **Bullet journal signifiers** for tasks (see below).
-- **Two font pairings**, both bundled, so no network access is needed. The fonts are subset to Latin characters, and only the italic display faces are included, which keeps the theme file to about 150 KB; text in other scripts falls back to your system fonts.
+- **One font pairing**, bundled so no network access is needed: Outfit for text and headings, and Newsreader italic for accents and quotes. The fonts are subset to Latin characters, which keeps the theme file to about 90 KB; text in other scripts falls back to your system fonts.
 - **Mobile-friendly.** Heading sizes scale down on phones.
 
 ## Install
@@ -40,9 +40,6 @@ Open Settings → Appearance → Base colour scheme and choose Light, Dark, or A
 
 Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin to customise the theme. Open Settings → Style Settings → paper-lite:
 
-- **Fonts for light mode and for dark mode**, each choosing between:
-  - A · Outfit × Newsreader (light default)
-  - B · Manrope × Instrument Serif (dark default)
 - **Side panels (light mode):** Flat (cream, the default) or Sand (one warm step darker than the editor).
 - **Floating cards:** never (the default, one continuous surface), dark mode only, or always. Cards are rounded panes with gaps between them.
 - **External link icon:** a ↗ arrow in the link colour, none, or Obsidian's default.
@@ -96,4 +93,4 @@ See [RELEASING.md](RELEASING.md). In short: bump `version` in `manifest.json`, r
 
 The theme is released under the [MIT Licence](LICENSE). It includes the original copyright of Stéphane Sulikowski and the copyright of the paper-lite changes.
 
-The bundled fonts are licensed under the SIL Open Font Licence 1.1. See [fonts/OFL.txt](fonts/OFL.txt) for their copyright notices: Outfit, Newsreader, Manrope, Instrument Serif, and iA Writer Duo (Regular). They are subset to Latin characters to save space; see [fonts/OFL.txt](fonts/OFL.txt) for the changes.
+The bundled fonts, Outfit and Newsreader, are licensed under the SIL Open Font Licence 1.1. They are subset to Latin characters to save space; see [fonts/OFL.txt](fonts/OFL.txt) for their copyright notices and the changes.
