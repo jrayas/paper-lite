@@ -311,6 +311,7 @@ body.theme-light.sw-panels-sand {
     --sw-accent: #e0522a;
     --sw-link: #b8431c;
     --sw-ink: #1b1a17;
+    --sw-checkbox-edge: #e8996a;
     --sw-on-ink: #ffffff;
     --sw-canvas: #fbf7f0;
 
@@ -399,6 +400,7 @@ body.theme-light.sw-panels-sand {
     --sw-accent: #ff8a63;
     --sw-link: #ff8a63;
     --sw-ink: #f4efe6;
+    --sw-checkbox-edge: #8c5a3c;
     --sw-on-ink: #151412;
     --sw-canvas: #151412;
 
@@ -470,11 +472,32 @@ body.theme-light.sw-panels-sand {
     --color-green: #8fcfaa;
 }
 
-/* Green checkboxes vanish on the dark surfaces */
+/* Dark: the closed box is black with a white tick, and the open box is filled with the same
+   peach as the blockquote. Pure black would vanish on the near-black surface, so the closed box
+   also gets a thin lighter edge (see below). */
 body.theme-dark {
-    --checkbox-color: var(--sw-accent-soft);
-    --checkbox-color-hover: var(--sw-orange);
-    --checkbox-marker-color: var(--sw-bg);
+    --checkbox-color: #0a0908;
+    --checkbox-color-hover: #000000;
+    --checkbox-marker-color: #ffffff;
+}
+
+/* Open task: the blockquote's peach, with a deeper peach border, and no glow around it */
+input[type="checkbox"].task-list-item-checkbox:not(:checked) {
+    border-width: 1.5px;
+    background-color: var(--sw-tint-peach);
+}
+
+input[type="checkbox"].task-list-item-checkbox:not(:checked):hover {
+    filter: brightness(0.92);
+}
+
+input[type="checkbox"].task-list-item-checkbox:is(:hover, :focus, :focus-visible, :active) {
+    outline: none;
+    box-shadow: none;
+}
+
+body.theme-dark input[type="checkbox"].task-list-item-checkbox:checked {
+    border-color: var(--sw-border-strong);
 }
 
 /* Shared derived tokens */
@@ -509,10 +532,12 @@ body.theme-dark {
     --tag-color: var(--sw-ink-mint);
     --tag-color-hover: var(--sw-ink-mint);
 
-    --checkbox-color: var(--sw-green);
-    --checkbox-color-hover: var(--sw-green-2);
-    --checkbox-border-color: var(--sw-border-strong);
-    --checkbox-border-color-hover: var(--sw-orange);
+    /* Checkboxes: an open task is filled with the blockquote's peach, a closed one is solid black with a white tick */
+    --checkbox-color: #1b1a17;
+    --checkbox-color-hover: #3a352d;
+    --checkbox-marker-color: #ffffff;
+    --checkbox-border-color: var(--sw-checkbox-edge);
+    --checkbox-border-color-hover: var(--sw-checkbox-edge);
 
     --nav-item-background-active: var(--sw-nav-active-bg);
     --nav-item-color-active: var(--sw-nav-active-fg);

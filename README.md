@@ -16,6 +16,7 @@ A warm, editorial theme for [Obsidian](https://obsidian.md): cream paper, ink-da
 - **Accent titles.** Italic text inside a heading is set in the display serif, in orange: `# Slow software. *Why patience ships better apps*`
 - **Callouts.** Tinted by type: note in blue, tip in mint, warning in peach, question in lavender, quote in yellow.
 - **Quotes, code and embeds.** Peach blockquotes in the display serif, dark code blocks in your system's monospace font, and embedded notes shown as a dark green card. Plain alternatives are available in the settings.
+- **Checkboxes.** An open task is a soft peach box, the same peach as the blockquote, with a deeper peach border and no ring or glow. A done task is black with a white tick (with a thin lighter edge in dark mode so it stays visible).
 - **Bullet journal signifiers** for tasks (see below).
 - **One font pairing**, bundled so no network access is needed: Outfit for text and headings, and Newsreader italic for accents and quotes. The fonts are subset to Latin characters, which keeps the theme file to about 90 KB; text in other scripts falls back to your system fonts.
 - **Mobile-friendly.** Heading sizes scale down on phones.

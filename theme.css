@@ -283,6 +283,7 @@ body.theme-light.sw-panels-sand {
 --sw-accent: #e0522a;
 --sw-link: #b8431c;
 --sw-ink: #1b1a17;
+--sw-checkbox-edge: #e8996a;
 --sw-on-ink: #ffffff;
 --sw-canvas: #fbf7f0;
 --sw-tint-mint: #cdebd9;
@@ -358,6 +359,7 @@ body.theme-light.sw-panels-sand {
 --sw-accent: #ff8a63;
 --sw-link: #ff8a63;
 --sw-ink: #f4efe6;
+--sw-checkbox-edge: #8c5a3c;
 --sw-on-ink: #151412;
 --sw-canvas: #151412;
 --sw-tint-mint: #1e3a2b;
@@ -419,9 +421,23 @@ body.theme-light.sw-panels-sand {
 --color-green: #8fcfaa;
 }
 body.theme-dark {
---checkbox-color: var(--sw-accent-soft);
---checkbox-color-hover: var(--sw-orange);
---checkbox-marker-color: var(--sw-bg);
+--checkbox-color: #0a0908;
+--checkbox-color-hover: #000000;
+--checkbox-marker-color: #ffffff;
+}
+input[type="checkbox"].task-list-item-checkbox:not(:checked) {
+border-width: 1.5px;
+background-color: var(--sw-tint-peach);
+}
+input[type="checkbox"].task-list-item-checkbox:not(:checked):hover {
+filter: brightness(0.92);
+}
+input[type="checkbox"].task-list-item-checkbox:is(:hover, :focus, :focus-visible, :active) {
+outline: none;
+box-shadow: none;
+}
+body.theme-dark input[type="checkbox"].task-list-item-checkbox:checked {
+border-color: var(--sw-border-strong);
 }
 .theme-light,
 .theme-dark {
@@ -450,10 +466,11 @@ body.theme-dark {
 --tag-background-hover: var(--sw-tint-mint);
 --tag-color: var(--sw-ink-mint);
 --tag-color-hover: var(--sw-ink-mint);
---checkbox-color: var(--sw-green);
---checkbox-color-hover: var(--sw-green-2);
---checkbox-border-color: var(--sw-border-strong);
---checkbox-border-color-hover: var(--sw-orange);
+--checkbox-color: #1b1a17;
+--checkbox-color-hover: #3a352d;
+--checkbox-marker-color: #ffffff;
+--checkbox-border-color: var(--sw-checkbox-edge);
+--checkbox-border-color-hover: var(--sw-checkbox-edge);
 --nav-item-background-active: var(--sw-nav-active-bg);
 --nav-item-color-active: var(--sw-nav-active-fg);
 --nav-item-background-hover: var(--background-modifier-hover);
