@@ -1,7 +1,7 @@
 /* @settings
 
-name: Suliworld
-id: suliworld
+name: paper-lite
+id: paper-lite
 settings:
     -
         id: sw-typography
@@ -61,23 +61,9 @@ settings:
         level: 2
         collapsed: false
     -
-        id: sw-light-variant
-        title: Light mode variant
-        description: Cream (cream sidebars, pill tabs) or Forest (deep green sidebars, orange-underlined tabs)
-        type: class-select
-        allowEmpty: false
-        default: sw-light-cream
-        options:
-            -
-                label: Cream
-                value: sw-light-cream
-            -
-                label: Forest
-                value: sw-light-forest
-    -
         id: sw-light-panels
         title: Side panels (light mode)
-        description: Flat matches the editor's cream and separates the panels with hairlines; Sand makes the panels one warm step darker. Has no effect on the Forest variant or in dark mode.
+        description: Flat matches the editor's cream and separates the panels with hairlines; Sand makes the panels one warm step darker. Has no effect in dark mode.
         type: class-select
         allowEmpty: false
         default: sw-panels-flat
@@ -262,7 +248,7 @@ settings:
 
 /* =========================================================
    Suliworld — Obsidian theme
-   Light = "Cream" (or the "Forest" variant), dark = "Night cards".
+   Light = "Cream", dark = "Night".
    Tokens mirror the stylesheet of https://www.suliworld.com.
    Fonts are embedded at the end of theme.css by build.sh.
    ========================================================= */
@@ -1181,8 +1167,8 @@ body:not(.sw-plain-embeds) .internal-embed.markdown-embed .markdown-embed-title 
     background: var(--background-modifier-hover);
 }
 
-/* Small orange dot marks the active tab (the Forest variant uses its own orange bar) */
-body:not(.sw-light-forest) .workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before {
+/* Small orange dot marks the active tab */
+.workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before {
     content: "";
     display: inline-block;
     width: 6px;
@@ -1194,6 +1180,13 @@ body:not(.sw-light-forest) .workspace .mod-root .workspace-tab-header.is-active 
 }
 
 /* ---------- File explorer & sidebars ---------- */
+/* Backlink and search-result titles: Obsidian colours them with --nav-item-color-active,
+   which the theme sets to the selected-row pill's text colour (dark ink in dark mode), so
+   they vanished on the dark panel. Keep them in the normal navigation colour. */
+.search-result:not(.is-collapsed) .search-result-file-title {
+    color: var(--nav-item-color);
+}
+
 /* No hairline above the vault name and the help/settings icons */
 body:not(.is-mobile) .workspace-split.mod-primary-split .workspace-sidedock-vault-profile,
 .workspace-sidedock-vault-profile {
@@ -1221,7 +1214,7 @@ body:not(.is-grabbing) .nav-folder-title:hover {
 }
 
 /* Selected row: a hairline outline, like the active tab, so it stays visible on the sand panel */
-body.theme-light:not(.sw-light-forest) :is(.tree-item-self.is-active, .nav-file-title.is-active, .nav-folder-title.is-active) {
+body.theme-light :is(.tree-item-self.is-active, .nav-file-title.is-active, .nav-folder-title.is-active) {
     box-shadow: inset 0 0 0 1px var(--sw-border-strong);
 }
 
@@ -1357,146 +1350,6 @@ body.theme-light.sw-cards-always {
     right: calc(var(--sw-card-gap) * 2);
     border: 0;
     border-radius: var(--sw-pill);
-}
-
-/* ---------- Light variant: Forest ----------
-   Same cream editor, but the ribbon and sidebars take the site's
-   dark-green "featured card" surface; tabs are underlined in orange. */
-body.theme-light.sw-light-forest {
-    --sw-forest-deep: #17301f;
-    --sw-forest-line: #355a47;
-    --ribbon-background: var(--sw-forest-deep);
-    --ribbon-background-collapsed: var(--sw-forest-deep);
-    --titlebar-background: var(--sw-forest-deep);
-    --titlebar-background-focused: var(--sw-forest-deep);
-}
-
-body.theme-light.sw-light-forest :is(.workspace-split.mod-sidedock, .workspace-ribbon, .workspace-drawer) {
-    --sw-surface: var(--sw-green);
-    --sw-text: var(--sw-on-green);
-    --sw-body: var(--sw-on-green);
-    --sw-meta: var(--sw-on-green-muted);
-    --sw-muted: var(--sw-on-green-muted);
-    --sw-subtle: #8faf9c;
-    --sw-border: var(--sw-green-2);
-    --sw-border-strong: var(--sw-forest-line);
-    --sw-link: var(--sw-accent-soft);
-    --sw-accent: var(--sw-accent-soft);
-    --sw-nav-active-fg: #1b1a17;
-
-    --background-primary: var(--sw-forest-deep);
-    --background-primary-alt: var(--sw-forest-deep);
-    --background-secondary: var(--sw-green);
-    --background-secondary-alt: var(--sw-forest-deep);
-    --background-modifier-border: var(--sw-green-2);
-    --background-modifier-border-hover: var(--sw-forest-line);
-    --background-modifier-border-focus: var(--sw-accent-soft);
-    --background-modifier-hover: rgba(251, 247, 240, 0.08);
-    --background-modifier-active-hover: rgba(255, 138, 99, 0.16);
-    --background-modifier-form-field: var(--sw-forest-deep);
-    --divider-color: var(--sw-forest-deep);
-    --tab-container-background: var(--sw-green);
-    --mobile-sidebar-background: var(--sw-green);
-    --raised-background: var(--sw-green-2);
-    --interactive-normal: var(--sw-green-2);
-    --interactive-hover: var(--sw-forest-line);
-
-    --text-normal: var(--sw-on-green);
-    --text-muted: var(--sw-on-green-muted);
-    --text-faint: #8faf9c;
-    --text-accent: var(--sw-accent-soft);
-    --text-accent-hover: var(--sw-on-green);
-    --text-selection: rgba(255, 138, 99, 0.3);
-    --text-highlight-bg: rgba(255, 241, 168, 0.25);
-    --link-color: var(--sw-accent-soft);
-    --link-color-hover: var(--sw-on-green);
-    --link-external-color: var(--sw-accent-soft);
-    --link-unresolved-color: var(--sw-accent-soft);
-
-    --icon-color: var(--sw-on-green-muted);
-    --icon-color-hover: var(--sw-on-green);
-    --icon-color-focused: var(--sw-on-green);
-    --icon-color-active: var(--sw-accent-soft);
-
-    --nav-item-color: var(--sw-on-green-muted);
-    --nav-item-color-hover: var(--sw-on-green);
-    --nav-item-color-active: #1b1a17;
-    --nav-item-background-active: var(--sw-orange);
-    --nav-item-background-hover: rgba(251, 247, 240, 0.08);
-    --nav-collapse-icon-color: #8faf9c;
-    --nav-collapse-icon-color-collapsed: #8faf9c;
-    --nav-indentation-guide-color: rgba(201, 216, 206, 0.18);
-    --nav-item-color-selected: var(--sw-on-green);
-    --nav-item-background-selected: rgba(255, 138, 99, 0.22);
-    --nav-item-color-highlighted: var(--sw-accent-soft);
-    --nav-heading-color: var(--sw-on-green);
-    --nav-heading-color-hover: var(--sw-on-green);
-    --nav-heading-color-collapsed: var(--sw-on-green-muted);
-    --nav-heading-color-collapsed-hover: var(--sw-on-green);
-    --vault-profile-color: var(--sw-on-green);
-    --vault-profile-color-hover: var(--sw-on-green);
-
-    /* Obsidian resolves these on body, so they're restated here */
-    --tab-background-active: rgba(251, 247, 240, 0.1);
-    --tab-text-color: var(--sw-on-green-muted);
-    --tab-text-color-focused: var(--sw-on-green-muted);
-    --tab-text-color-active: var(--sw-on-green);
-    --tab-text-color-focused-active: var(--sw-on-green);
-    --tab-text-color-focused-active-current: var(--sw-on-green);
-    --tab-text-color-focused-highlighted: var(--sw-accent-soft);
-    --metadata-label-text-color: var(--sw-on-green-muted);
-    --metadata-input-text-color: var(--sw-on-green);
-    --search-result-background: var(--sw-forest-deep);
-
-    --tag-background: var(--sw-green-2);
-    --tag-background-hover: var(--sw-forest-line);
-    --tag-color: var(--sw-on-green);
-    --tag-color-hover: var(--sw-on-green);
-    --checkbox-color: var(--sw-accent-soft);
-    --checkbox-marker-color: var(--sw-forest-deep);
-    --scrollbar-thumb-bg: rgba(251, 247, 240, 0.16);
-    --scrollbar-active-thumb-bg: rgba(251, 247, 240, 0.28);
-
-    color: var(--text-normal);
-}
-
-body.theme-light.sw-light-forest .workspace-ribbon {
-    border-color: var(--sw-forest-deep);
-}
-
-/* Tabs: classic tabs on a sand bar, active one underlined in orange */
-body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header-container {
-    background: var(--sw-bg-2);
-}
-
-body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header-container-inner {
-    align-items: stretch;
-    gap: 2px;
-    padding: 6px 8px 0;
-}
-
-body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header {
-    height: auto;
-    border-radius: 10px 10px 0 0;
-}
-
-body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active {
-    margin-bottom: -1px;
-    border-radius: 10px 10px 0 0;
-    background: var(--sw-bg);
-    box-shadow: inset 0 3px 0 var(--sw-orange);
-}
-
-body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active :is(.workspace-tab-header-inner-title, .workspace-tab-header-inner-icon, .workspace-tab-header-inner-close-button) {
-    color: var(--sw-text);
-}
-
-body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-    font-weight: 600;
-}
-
-body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover {
-    background: var(--background-modifier-hover);
 }
 
 /* ---------- Mobile ---------- */

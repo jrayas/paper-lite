@@ -34,7 +34,7 @@ If the workflow is unavailable, release by hand with `gh release create 0.1.1 th
 ## GitHub settings
 
 - **Repository:** `jrayas/paper-lite`, a normal public repository that began as a copy of `sulistef/obsidian-suliworld` (its history is kept for attribution).
-- **Topics:** `obsidian`, `obsidian-theme`, `obsidian-md`, `theme`, `css`.
+- **Topics:** `obsidian`, `obsidian-theme`, `obsidian-md`, `obsidian-css`, `theme`, `css`, `light-theme`, `dark-theme`, `minimal`, `editorial`.
 - **Remotes:** `origin` is `jrayas/paper-lite`. `upstream` (the original) is kept locally for reference only. To look at upstream changes, run `git fetch upstream` and compare; GitHub shows no link to it.
 - **Actions:** enabled by default on a normal repository. If a release run does not start, check the Actions tab.
 
