@@ -12,7 +12,7 @@ settings:
     -
         id: sw-light-font
         title: Light mode fonts
-        description: Text × display pairing (heading accents, quotes, drop cap)
+        description: Text × display pairing (heading accents and quotes)
         type: class-select
         allowEmpty: false
         default: sw-lf-a
