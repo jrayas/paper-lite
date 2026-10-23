@@ -14,7 +14,7 @@ A warm, editorial theme for [Obsidian](https://obsidian.md), based on the design
 - **Accent titles.** Italic text inside a heading is set in the display serif, in orange:
   `# Slow software. *Why patience ships better apps*`
 - **Tinted callouts.** Note in blue, tip in mint, warning in peach, question in lavender, quote in yellow.
-- **Peach blockquotes** in the display serif, **dark code blocks** in iA Writer Duo, and embedded notes shown as a dark green card.
+- **Neutral blocks.** A plain-rule blockquote in the display serif, sand code blocks in iA Writer Duo, and one neutral callout card whose bar, icon and title carry the colour (ink, green, rust or red). Embedded notes sit in a hairline frame. The earlier peach quote box and dark-green embed card are optional Style Settings switches.
 - **Bullet journal signifiers** for tasks (see below).
 - **Five font pairings**, all bundled: no network access is needed.
 - **Mobile-friendly.** Heading sizes scale down on phones.
