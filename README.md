@@ -9,7 +9,7 @@ A warm, editorial theme for [Obsidian](https://obsidian.md), based on the design
 ## Features
 
 - **Two light variants.** *Cream* (white sidebars, warm sand pill tabs and selected rows with a small orange dot) and *Forest* (deep green ribbon and sidebars, orange-underlined tabs).
-- **Dark mode with floating cards.** Rounded panes float on a near-black canvas (desktop only).
+- **Dark mode as one surface.** The sidebars, tab bar and editor share one near-black surface, separated by hairlines, matching the flat light mode. The floating-card layout (rounded panes with gaps) is an optional setting.
 - **One heading system.** Every level uses the same ink colour and typeface, and the hierarchy comes from size and weight: a large light H1 over a hairline, semi-bold H2 to H4, muted H5, and small-caps H6. Orange is kept for interaction, such as the fold chevron in the margin (always visible on a folded heading).
 - **Accent titles.** Italic text inside a heading is set in the display serif, in orange:
   `# Slow software. *Why patience ships better apps*`
@@ -50,7 +50,8 @@ Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings
   - D · Hanken Grotesk × Gloock
   - E · Albert Sans × DM Mono
 - Light mode variant: Cream or Forest
-- Floating cards: dark mode only, always, or never
+- Side panels (light mode): Flat (cream, the default) or Sand (one warm step darker)
+- Floating cards: never (the default, one surface), dark mode only, or always
 - External link icon: ↗ arrow in the link color, none, or Obsidian's default
 - Drop cap in reading view
 - Plain blockquotes and plain embeds

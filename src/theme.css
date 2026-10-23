@@ -63,7 +63,7 @@ settings:
     -
         id: sw-light-variant
         title: Light mode variant
-        description: Cream (white sidebars, pill tabs) or Forest (deep green sidebars, orange-underlined tabs)
+        description: Cream (cream sidebars, pill tabs) or Forest (deep green sidebars, orange-underlined tabs)
         type: class-select
         allowEmpty: false
         default: sw-light-cream
@@ -75,22 +75,36 @@ settings:
                 label: Forest
                 value: sw-light-forest
     -
-        id: sw-cards
-        title: Floating cards
-        description: Rounded floating panes, like the cards on suliworld.com (desktop only)
+        id: sw-light-panels
+        title: Side panels (light mode)
+        description: Flat matches the editor's cream and separates the panels with hairlines; Sand makes the panels one warm step darker. Has no effect on the Forest variant or in dark mode.
         type: class-select
         allowEmpty: false
-        default: sw-cards-dark
+        default: sw-panels-flat
         options:
+            -
+                label: Flat (cream)
+                value: sw-panels-flat
+            -
+                label: Sand
+                value: sw-panels-sand
+    -
+        id: sw-cards
+        title: Floating cards
+        description: Rounded floating panes with gaps between them, like the cards on suliworld.com (desktop only). Never keeps the panels, tabs and editor as one continuous surface.
+        type: class-select
+        allowEmpty: false
+        default: sw-cards-never
+        options:
+            -
+                label: Never (one surface)
+                value: sw-cards-never
             -
                 label: Dark mode only
                 value: sw-cards-dark
             -
                 label: Always
                 value: sw-cards-always
-            -
-                label: Never
-                value: sw-cards-never
     -
         id: sw-link-icon
         title: External link icon
@@ -387,11 +401,19 @@ body.theme-dark.sw-df-e {
     --sw-display-style: italic;
 }
 
+/* ---------- Light: Sand panels (opt-in "Side panels" setting) ---------- */
+body.theme-light.sw-panels-sand {
+    --sw-panel: var(--sw-bg-2);
+}
+
 /* ---------- Light: Cream ---------- */
 .theme-light {
     --sw-bg: #fbf7f0;
     --sw-bg-2: #f4eee3;
     --sw-surface: #ffffff;
+    /* Side panels, vault row and status bar: the same cream as the editor, separated by
+       hairlines (white clashed with the cream paper). The "Sand" setting below darkens them. */
+    --sw-panel: var(--sw-bg);
     --sw-text: #1b1a17;
     --sw-body: #2a2823;
     --sw-meta: #4a463e;
@@ -429,7 +451,7 @@ body.theme-dark.sw-df-e {
 
     --background-primary: var(--sw-bg);
     --background-primary-alt: var(--sw-bg-2);
-    --background-secondary: var(--sw-surface);
+    --background-secondary: var(--sw-panel);
     --background-secondary-alt: var(--sw-bg);
     --background-modifier-border: var(--sw-border);
     --background-modifier-border-hover: var(--sw-border-strong);
@@ -457,8 +479,8 @@ body.theme-dark.sw-df-e {
     --ribbon-background-collapsed: var(--sw-bg);
     --titlebar-background: var(--sw-bg);
     --titlebar-background-focused: var(--sw-bg);
-    --tab-container-background: var(--sw-surface);
-    --status-bar-background: var(--sw-surface);
+    --tab-container-background: var(--sw-panel);
+    --status-bar-background: var(--sw-panel);
 
     --code-background: var(--sw-border);
     --code-normal: var(--sw-text);
@@ -474,11 +496,12 @@ body.theme-dark.sw-df-e {
     --color-green: #3f8a62;
 }
 
-/* ---------- Dark: Night cards ---------- */
+/* ---------- Dark: Night ---------- */
 .theme-dark {
     --sw-bg: #151412;
     --sw-bg-2: #1b1a17;
     --sw-surface: #211f1b;
+    --sw-panel: var(--sw-bg);
     --sw-text: #f4efe6;
     --sw-body: #e4ded2;
     --sw-meta: #bdb5a6;
@@ -515,7 +538,7 @@ body.theme-dark.sw-df-e {
 
     --background-primary: var(--sw-bg);
     --background-primary-alt: var(--sw-bg-2);
-    --background-secondary: var(--sw-surface);
+    --background-secondary: var(--sw-panel);
     --background-secondary-alt: var(--sw-bg-2);
     --background-modifier-border: var(--sw-border);
     --background-modifier-border-hover: var(--sw-border-strong);
@@ -543,8 +566,8 @@ body.theme-dark.sw-df-e {
     --ribbon-background-collapsed: var(--sw-bg);
     --titlebar-background: var(--sw-bg);
     --titlebar-background-focused: var(--sw-bg);
-    --tab-container-background: var(--sw-surface);
-    --status-bar-background: var(--sw-surface);
+    --tab-container-background: var(--sw-panel);
+    --status-bar-background: var(--sw-panel);
 
     --code-background: var(--sw-border);
     --code-normal: var(--sw-text);
@@ -1171,6 +1194,12 @@ body:not(.sw-light-forest) .workspace .mod-root .workspace-tab-header.is-active 
 }
 
 /* ---------- File explorer & sidebars ---------- */
+/* No hairline above the vault name and the help/settings icons */
+body:not(.is-mobile) .workspace-split.mod-primary-split .workspace-sidedock-vault-profile,
+.workspace-sidedock-vault-profile {
+    border-top: 0;
+}
+
 .nav-folder.mod-root > .nav-folder-title {
     font-size: 0.75em;
     font-weight: 700;
@@ -1189,6 +1218,11 @@ body:not(.is-grabbing) .tree-item-self:hover,
 body:not(.is-grabbing) .nav-file-title:hover,
 body:not(.is-grabbing) .nav-folder-title:hover {
     border-radius: var(--sw-pill);
+}
+
+/* Selected row: a hairline outline, like the active tab, so it stays visible on the sand panel */
+body.theme-light:not(.sw-light-forest) :is(.tree-item-self.is-active, .nav-file-title.is-active, .nav-folder-title.is-active) {
+    box-shadow: inset 0 0 0 1px var(--sw-border-strong);
 }
 
 .tree-item-self.is-active .tree-item-icon,
@@ -1275,7 +1309,7 @@ select:focus {
 }
 
 /* ---------- Floating cards layout (dark by default, desktop only) ---------- */
-body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile),
+body.theme-dark.sw-cards-dark:not(.is-mobile),
 body.sw-cards-always:not(.is-mobile) {
     --sw-card-gap: 6px;
     --background-primary: var(--sw-surface);
@@ -1295,30 +1329,30 @@ body.theme-light.sw-cards-always {
     --sw-canvas: var(--sw-bg);
 }
 
-:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) :is(.app-container, .horizontal-main-container, .workspace, .workspace-split, .workspace-ribbon) {
+:is(body.theme-dark.sw-cards-dark:not(.is-mobile), body.sw-cards-always:not(.is-mobile)) :is(.app-container, .horizontal-main-container, .workspace, .workspace-split, .workspace-ribbon) {
     background-color: var(--sw-canvas);
 }
 
-:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-ribbon {
+:is(body.theme-dark.sw-cards-dark:not(.is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-ribbon {
     border: 0;
 }
 
-:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-tabs:not(.mod-stacked) {
+:is(body.theme-dark.sw-cards-dark:not(.is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-tabs:not(.mod-stacked) {
     margin: var(--sw-card-gap);
     overflow: hidden;
     border-radius: var(--radius-xl);
     background: var(--sw-surface);
 }
 
-:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-split.mod-sidedock {
+:is(body.theme-dark.sw-cards-dark:not(.is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace-split.mod-sidedock {
     border: 0;
 }
 
-:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace .mod-root .workspace-tab-header-container {
+:is(body.theme-dark.sw-cards-dark:not(.is-mobile), body.sw-cards-always:not(.is-mobile)) .workspace .mod-root .workspace-tab-header-container {
     border-bottom: 0;
 }
 
-:is(body.theme-dark:not(.sw-cards-never, .sw-cards-always, .is-mobile), body.sw-cards-always:not(.is-mobile)) .status-bar {
+:is(body.theme-dark.sw-cards-dark:not(.is-mobile), body.sw-cards-always:not(.is-mobile)) .status-bar {
     bottom: calc(var(--sw-card-gap) * 2);
     right: calc(var(--sw-card-gap) * 2);
     border: 0;
