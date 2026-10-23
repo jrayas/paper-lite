@@ -4,7 +4,9 @@ Fonts embedded in theme.css (from the fonts/ folder)
 All fonts below are licensed under the SIL Open Font License, Version 1.1,
 reproduced in full at the end of this file. The Google Fonts files are the
 latin subsets served by Google Fonts; the iA Writer Duo files are the
-unmodified webfonts from https://github.com/iaolo/iA-Fonts.
+unmodified webfonts from https://github.com/iaolo/iA-Fonts (Regular weight only).
+Newsreader has been modified: the variable font is fixed at weight 400 (the optical
+size axis is kept) to reduce file size.
 
 Outfit
 Copyright 2021 The Outfit Project Authors (https://github.com/Outfitio/Outfit-Fonts)
@@ -18,24 +20,6 @@ Copyright 2018 The Manrope Project Authors (https://github.com/googlefonts/manro
 Instrument Serif
 Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
 
-Plus Jakarta Sans
-Copyright 2020 The Plus Jakarta Sans Project Authors (https://github.com/tokotype/PlusJakartaSans)
-
-Young Serif
-Copyright 2023 The Young Serif Project Authors (https://github.com/noirblancrouge/YoungSerif)
-
-Hanken Grotesk
-Copyright 2021 The Hanken Grotesk Project Authors (https://github.com/marcologous/hanken-grotesk)
-
-Gloock
-Copyright 2022 The Gloock Project Authors (https://github.com/duartp/gloock)
-
-Albert Sans
-Copyright 2021 The Albert Sans Project Authors (https://github.com/usted/Albert-Sans)
-
-DM Mono
-Copyright 2020 The DM Mono Project Authors (https://www.github.com/googlefonts/dm-mono)
-
 iA Writer Duo
 Copyright © 2018 Information Architects Inc. with Reserved Font Name "iA Writer"
 Based on IBM Plex Typeface, Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"
@@ -45,7 +29,6 @@ Based on IBM Plex Typeface, Copyright © 2017 IBM Corp. with Reserved Font Name 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
 https://scripts.sil.org/OFL
-
 
 -----------------------------------------------------------
 SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007

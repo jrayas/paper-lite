@@ -23,15 +23,6 @@ settings:
             -
                 label: B · Manrope × Instrument Serif
                 value: sw-lf-b
-            -
-                label: C · Plus Jakarta Sans × Young Serif
-                value: sw-lf-c
-            -
-                label: D · Hanken Grotesk × Gloock
-                value: sw-lf-d
-            -
-                label: E · Albert Sans × DM Mono
-                value: sw-lf-e
     -
         id: sw-dark-font
         title: Dark mode fonts
@@ -45,15 +36,6 @@ settings:
             -
                 label: B · Manrope × Instrument Serif
                 value: sw-df-b
-            -
-                label: C · Plus Jakarta Sans × Young Serif
-                value: sw-df-c
-            -
-                label: D · Hanken Grotesk × Gloock
-                value: sw-df-d
-            -
-                label: E · Albert Sans × DM Mono
-                value: sw-df-e
     -
         id: sw-layout
         title: Layout
@@ -363,27 +345,6 @@ body.theme-light.sw-lf-b,
 body.theme-dark.sw-df-b {
     --sw-font-sans: "Manrope";
     --sw-font-display: "Instrument Serif";
-    --sw-display-style: italic;
-}
-
-body.theme-light.sw-lf-c,
-body.theme-dark.sw-df-c {
-    --sw-font-sans: "Plus Jakarta Sans";
-    --sw-font-display: "Young Serif";
-    --sw-display-style: normal;
-}
-
-body.theme-light.sw-lf-d,
-body.theme-dark.sw-df-d {
-    --sw-font-sans: "Hanken Grotesk";
-    --sw-font-display: "Gloock";
-    --sw-display-style: normal;
-}
-
-body.theme-light.sw-lf-e,
-body.theme-dark.sw-df-e {
-    --sw-font-sans: "Albert Sans";
-    --sw-font-display: "DM Mono";
     --sw-display-style: italic;
 }
 
