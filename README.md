@@ -53,7 +53,7 @@ Install the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings
 - Floating cards: dark mode only, always, or never
 - External link icon: ↗ arrow in the link color, none, or Obsidian's default
 - Drop cap in reading view
-- Plain blockquotes and plain embeds
+- Editorial blockquotes (peach box) and the green embed card (both off by default)
 - Bullet journal signifiers: on/off, size, and a symbol and color for each type
 
 Without Style Settings, the theme uses the defaults listed above.
