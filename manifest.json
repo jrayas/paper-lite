@@ -1,7 +1,6 @@
 {
-  "name": "Suliworld",
-  "version": "1.0.0",
+  "name": "paper-lite",
+  "version": "0.1.0",
   "minAppVersion": "1.6.0",
-  "author": "Stéphane Sulikowski",
-  "authorUrl": "https://www.suliworld.com"
+  "author": "Anthirayas"
 }
