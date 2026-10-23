@@ -1,6 +1,6 @@
 # paper-lite
 
-> **Forked from [Suliworld](https://github.com/sulistef/obsidian-suliworld)** by Stéphane Sulikowski (MIT licence). paper-lite is an altered version of that theme and is not affiliated with the original. Sections below that still say "Suliworld" describe the upstream theme and are updated as paper-lite diverges.
+> **Based on [Suliworld](https://github.com/sulistef/obsidian-suliworld)** by Stéphane Sulikowski (MIT licence). paper-lite started as a copy of that theme and is now maintained as a separate project, not affiliated with the original. Sections below that still say "Suliworld" describe the upstream theme and are updated as paper-lite diverges.
 
 A warm, editorial theme for [Obsidian](https://obsidian.md), based on the design of [suliworld.com](https://www.suliworld.com): cream paper, forest green, a touch of orange, and serif accents.
 

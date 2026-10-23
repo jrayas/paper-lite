@@ -1,6 +1,6 @@
 # Releasing paper-lite
 
-paper-lite is a GitHub fork of [sulistef/obsidian-suliworld](https://github.com/sulistef/obsidian-suliworld). Obsidian installs a theme from the GitHub release whose tag equals the `version` in `manifest.json`, so the two must always agree.
+paper-lite is an independent copy (not a GitHub fork) of [sulistef/obsidian-suliworld](https://github.com/sulistef/obsidian-suliworld). Obsidian installs a theme from the GitHub release whose tag equals the `version` in `manifest.json`, so the two must always agree.
 
 ## Rules
 
@@ -33,13 +33,10 @@ If the workflow is unavailable, release by hand with `gh release create 0.1.1 th
 
 ## GitHub settings
 
-- **Repository:** `jrayas/paper-lite`, forked from `sulistef/obsidian-suliworld`.
+- **Repository:** `jrayas/paper-lite`, a normal public repository that began as a copy of `sulistef/obsidian-suliworld` (its history is kept for attribution).
 - **Topics:** `obsidian`, `obsidian-theme`, `obsidian-md`, `theme`, `css`.
-- **Remotes:** `origin` is the fork, `upstream` is the original. Pull upstream changes with `git fetch upstream && git merge upstream/main`, then rebuild.
-- **Actions:** workflows are disabled on a new fork until enabled in the repository's Actions tab (or with the API call below).
-  ```bash
-  gh api -X PUT repos/jrayas/paper-lite/actions/permissions -F enabled=true
-  ```
+- **Remotes:** `origin` is `jrayas/paper-lite`. `upstream` (the original) is kept locally for reference only. To look at upstream changes, run `git fetch upstream` and compare; GitHub shows no link to it.
+- **Actions:** enabled by default on a normal repository. If a release run does not start, check the Actions tab.
 
 ## Licence and credit
 
