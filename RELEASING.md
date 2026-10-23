@@ -40,7 +40,7 @@ If the workflow is unavailable, release by hand with `gh release create 0.1.1 th
 
 ## Licence and credit
 
-The upstream theme is MIT-licensed. Keep Stéphane Sulikowski's copyright line in `LICENSE` and the "Forked from" note in `README.md`. The bundled fonts are under the SIL Open Font Licence (see `fonts/OFL.txt`).
+The upstream theme is MIT-licensed. Keep Stéphane Sulikowski's copyright line in `LICENSE` and the "Based on" note in `README.md`. The bundled fonts are under the SIL Open Font Licence (see `fonts/OFL.txt`).
 
 ## Submitting to the community themes list
 
