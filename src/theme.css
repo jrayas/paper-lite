@@ -114,15 +114,15 @@ settings:
         type: class-toggle
         default: false
     -
-        id: sw-editorial-quotes
-        title: Editorial blockquotes
-        description: Peach box in the display serif, instead of the plain left rule
+        id: sw-plain-quotes
+        title: Plain blockquotes
+        description: Replaces the editorial quote (peach box, display font) with a classic blockquote
         type: class-toggle
         default: false
     -
-        id: sw-green-embeds
-        title: Green embed card
-        description: Dark green card around embedded notes, instead of the neutral frame
+        id: sw-plain-embeds
+        title: Plain embeds
+        description: Replaces the dark green card around embedded notes with a neutral frame
         type: class-toggle
         default: false
     -
@@ -330,30 +330,10 @@ body {
     --nav-item-weight-active: 600;
     --nav-item-radius: var(--sw-pill);
 
-    /* Code sits on the same sand surface as inline code and callouts.
-       Light palette (all >= 4.5:1 on #efe6d6); body.theme-dark overrides it below. */
-    --sw-block-bg: var(--sw-border);
-    --sw-code-normal: #2a2823;
-    --sw-code-comment: #6f6657;
-    --sw-code-function: #8a3a12;
-    --sw-code-important: #7a4b00;
-    --sw-code-keyword: #a83a14;
-    --sw-code-operator: #5b574f;
-    --sw-code-property: #2a5a8a;
-    --sw-code-punctuation: #5b574f;
-    --sw-code-string: #2f6b4a;
-    --sw-code-tag: #a83a14;
-    --sw-code-value: #6b4fa0;
-
-    /* Callout tones: ink for information, three signals for the rest */
-    --sw-ok: #2f6b4a;
-    --sw-warn: #a83a14;
-    --sw-danger: #b3261e;
-}
-
-body.theme-dark {
-    --sw-code-normal: #f4efe6;
-    --sw-code-comment: #a39b8a;
+    /* Code blocks are dark in both modes, like the site's <pre> */
+    --sw-pre-bg: #1b1a17;
+    --sw-code-normal: #fbf7f0;
+    --sw-code-comment: #8e8676;
     --sw-code-function: #ffe0c7;
     --sw-code-important: #fff1a8;
     --sw-code-keyword: #ff8a63;
@@ -363,9 +343,6 @@ body.theme-dark {
     --sw-code-string: #cdebd9;
     --sw-code-tag: #ff8a63;
     --sw-code-value: #e3daff;
-    --sw-ok: #8fcfaa;
-    --sw-warn: #ff8a63;
-    --sw-danger: #ff8f86;
 }
 
 /* ---------- Font pairings (same as suliworld.com) ---------- */
@@ -583,6 +560,13 @@ body.theme-dark.sw-df-e {
     --color-green: #8fcfaa;
 }
 
+/* Green checkboxes vanish on the dark surfaces */
+body.theme-dark {
+    --checkbox-color: var(--sw-accent-soft);
+    --checkbox-color-hover: var(--sw-orange);
+    --checkbox-marker-color: var(--sw-bg);
+}
+
 /* Shared derived tokens */
 .theme-light,
 .theme-dark {
@@ -605,19 +589,18 @@ body.theme-dark.sw-df-e {
     --h5-color: var(--sw-meta);
     --h6-color: var(--sw-meta);
 
-    --list-marker-color: var(--sw-subtle);
+    --list-marker-color: var(--sw-accent);
     --list-marker-color-hover: var(--sw-accent);
     --blockquote-color: var(--sw-text);
     --hr-color: var(--sw-border);
 
-    --tag-background: var(--sw-block-bg);
-    --tag-background-hover: var(--sw-border-strong);
-    --tag-color: var(--sw-meta);
-    --tag-color-hover: var(--sw-accent);
+    --tag-background: var(--sw-tint-mint);
+    --tag-background-hover: var(--sw-tint-mint);
+    --tag-color: var(--sw-ink-mint);
+    --tag-color-hover: var(--sw-ink-mint);
 
-    --checkbox-color: var(--sw-ink);
-    --checkbox-color-hover: var(--sw-meta);
-    --checkbox-marker-color: var(--sw-bg);
+    --checkbox-color: var(--sw-green);
+    --checkbox-color-hover: var(--sw-green-2);
     --checkbox-border-color: var(--sw-border-strong);
     --checkbox-border-color-hover: var(--sw-orange);
 
@@ -706,7 +689,7 @@ body.is-frameless .view-content * {
 }
 
 /* Inside the green embed card, the h1 rule takes the on-green colour */
-body.sw-green-embeds .internal-embed.markdown-embed :is(h1, .HyperMD-header-1) {
+body:not(.sw-plain-embeds) .internal-embed.markdown-embed :is(h1, .HyperMD-header-1) {
     border-bottom-color: var(--sw-green-2);
 }
 
@@ -770,22 +753,8 @@ body:not(.sw-link-native, .sw-link-none) .external-link::after {
     color: var(--sw-accent);
 }
 
-/* ---------- Blockquote ----------
-   Default: a plain warm rule, no fill, display serif. The peach editorial box is the
-   opt-in "Editorial blockquotes" setting (body.sw-editorial-quotes below). */
-body:not(.sw-editorial-quotes) {
-    --blockquote-border-thickness: 3px;
-    --blockquote-border-color: var(--sw-subtle);
-    --blockquote-color: var(--sw-meta);
-}
-
-body:not(.sw-editorial-quotes) :is(.markdown-rendered blockquote, .markdown-source-view.mod-cm6 .HyperMD-quote) {
-    font-family: var(--sw-font-display-stack);
-    font-style: var(--sw-display-style);
-    font-size: 1.1em;
-}
-
-body.sw-editorial-quotes .markdown-rendered blockquote {
+/* ---------- Blockquote: peach editorial quote ---------- */
+body:not(.sw-plain-quotes) .markdown-rendered blockquote {
     margin: 1.6em 0;
     padding: 20px 26px;
     border: 0;
@@ -798,17 +767,17 @@ body.sw-editorial-quotes .markdown-rendered blockquote {
     color: var(--sw-text);
 }
 
-body.sw-editorial-quotes .markdown-rendered blockquote > :first-child {
+body:not(.sw-plain-quotes) .markdown-rendered blockquote > :first-child {
     margin-top: 0;
 }
 
-body.sw-editorial-quotes .markdown-rendered blockquote > :last-child {
+body:not(.sw-plain-quotes) .markdown-rendered blockquote > :last-child {
     margin-bottom: 0;
 }
 
 /* CodeMirror sets the line's padding inline (hanging indent), so the
    background is widened with side shadows instead of padding. */
-body.sw-editorial-quotes .markdown-source-view.mod-cm6 .HyperMD-quote {
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote {
     background: var(--sw-tint-peach);
     box-shadow: -22px 0 0 var(--sw-tint-peach), 22px 0 0 var(--sw-tint-peach);
     font-family: var(--sw-font-display-stack);
@@ -818,46 +787,51 @@ body.sw-editorial-quotes .markdown-source-view.mod-cm6 .HyperMD-quote {
     color: var(--sw-text);
 }
 
-body.sw-editorial-quotes .markdown-source-view.mod-cm6 .HyperMD-quote::before {
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote::before {
     display: none;
 }
 
 /* Breathing room outside the box, on the neighbouring lines
    (padding, not margin: CodeMirror doesn't measure line margins) */
-body.sw-editorial-quotes .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-quote):has(+ .HyperMD-quote) {
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-quote):has(+ .HyperMD-quote) {
     padding-bottom: 16px;
 }
 
-body.sw-editorial-quotes .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) + .cm-line:not(.HyperMD-quote) {
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) + .cm-line:not(.HyperMD-quote) {
     padding-top: 16px;
 }
 
-body.sw-editorial-quotes .markdown-source-view.mod-cm6 .HyperMD-quote:not(.HyperMD-quote + .HyperMD-quote) {
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(.HyperMD-quote + .HyperMD-quote) {
     padding-top: 14px;
     border-top-left-radius: var(--radius-xl);
     border-top-right-radius: var(--radius-xl);
 }
 
-body.sw-editorial-quotes .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) {
+body:not(.sw-plain-quotes) .markdown-source-view.mod-cm6 .HyperMD-quote:not(:has(+ .HyperMD-quote)) {
     padding-bottom: 14px;
     border-bottom-left-radius: var(--radius-xl);
     border-bottom-right-radius: var(--radius-xl);
 }
 
-/* ---------- Callouts ----------
-   One neutral sand card. Only the left bar, icon and title carry colour, in four
-   tones: ink (information), green (tip/success), rust (warning), red (danger). */
+.sw-plain-quotes {
+    --blockquote-border-thickness: 2px;
+    --blockquote-border-color: var(--sw-orange);
+}
+
+/* ---------- Callouts: site tints ---------- */
 body .callout {
-    --sw-callout-fg: var(--sw-text);
-    --sw-callout-bar: var(--sw-subtle);
+    --sw-callout-bg: var(--sw-tint-blue);
+    --sw-callout-fg: var(--sw-ink-blue);
     border: 0;
-    background: var(--sw-block-bg);
-    box-shadow: inset 3px 0 0 var(--sw-callout-bar);
+    background: var(--sw-callout-bg);
     mix-blend-mode: normal;
 }
 
 body .callout .callout-title,
-body .callout .callout-icon,
+body .callout .callout-icon {
+    color: var(--sw-callout-fg);
+}
+
 body .callout .callout-icon .svg-icon {
     color: var(--sw-callout-fg);
 }
@@ -867,29 +841,30 @@ body .callout .callout-content {
 }
 
 .callout:is([data-callout="tip"], [data-callout="hint"], [data-callout="important"], [data-callout="success"], [data-callout="check"], [data-callout="done"]) {
-    --sw-callout-fg: var(--sw-ok);
-    --sw-callout-bar: var(--sw-ok);
+    --sw-callout-bg: var(--sw-tint-mint);
+    --sw-callout-fg: var(--sw-ink-mint);
 }
 
-.callout:is([data-callout="warning"], [data-callout="caution"], [data-callout="attention"]) {
-    --sw-callout-fg: var(--sw-warn);
-    --sw-callout-bar: var(--sw-warn);
+.callout:is([data-callout="warning"], [data-callout="caution"], [data-callout="attention"], [data-callout="danger"], [data-callout="error"], [data-callout="bug"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"]) {
+    --sw-callout-bg: var(--sw-tint-peach);
+    --sw-callout-fg: var(--sw-ink-peach);
 }
 
-.callout:is([data-callout="danger"], [data-callout="error"], [data-callout="bug"], [data-callout="failure"], [data-callout="fail"], [data-callout="missing"]) {
-    --sw-callout-fg: var(--sw-danger);
-    --sw-callout-bar: var(--sw-danger);
+.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"]) {
+    --sw-callout-bg: var(--sw-tint-lavender);
+    --sw-callout-fg: var(--sw-ink-lavender);
 }
 
-.callout:is([data-callout="question"], [data-callout="help"], [data-callout="faq"], [data-callout="abstract"], [data-callout="summary"], [data-callout="tldr"], [data-callout="quote"], [data-callout="cite"], [data-callout="example"]) {
-    --sw-callout-fg: var(--sw-meta);
+.callout:is([data-callout="quote"], [data-callout="cite"], [data-callout="example"]) {
+    --sw-callout-bg: var(--sw-tint-yellow);
+    --sw-callout-fg: var(--sw-ink-yellow);
 }
 
 /* ---------- Code ---------- */
 .markdown-rendered pre,
 .markdown-source-view.mod-cm6 .HyperMD-codeblock,
 .markdown-source-view.mod-cm6 .cm-embed-block pre {
-    --code-background: var(--sw-block-bg);
+    --code-background: var(--sw-pre-bg);
     --code-normal: var(--sw-code-normal);
     --code-comment: var(--sw-code-comment);
     --code-function: var(--sw-code-function);
@@ -901,6 +876,10 @@ body .callout .callout-content {
     --code-string: var(--sw-code-string);
     --code-tag: var(--sw-code-tag);
     --code-value: var(--sw-code-value);
+    --text-muted: #ada595;
+    --text-faint: #8e8676;
+    --background-modifier-hover: rgba(244, 239, 230, 0.08);
+    --text-selection: rgba(255, 138, 99, 0.3);
 }
 
 .markdown-rendered pre {
@@ -1063,18 +1042,8 @@ body.sw-bujo .markdown-source-view.mod-cm6 .HyperMD-task-line:is([data-task=">"]
     --sw-pill-fg: var(--sw-ink-yellow);
 }
 
-/* ---------- Embeds ----------
-   Default: a neutral hairline frame. The dark-green featured card is the opt-in
-   "Green embed card" setting (body.sw-green-embeds below). */
-body:not(.sw-green-embeds) .internal-embed.markdown-embed {
-    margin: 1em 0;
-    padding: 12px 20px;
-    border: 1px solid var(--sw-border-strong);
-    border-radius: var(--radius-l);
-    background: transparent;
-}
-
-body.sw-green-embeds .internal-embed.markdown-embed {
+/* ---------- Embeds: dark-green featured card ---------- */
+body:not(.sw-plain-embeds) .internal-embed.markdown-embed {
     --background-primary: var(--sw-green);
     --text-normal: var(--sw-on-green);
     --text-muted: var(--sw-on-green-muted);
@@ -1105,10 +1074,16 @@ body.sw-green-embeds .internal-embed.markdown-embed {
     color: var(--sw-on-green);
 }
 
-body.sw-green-embeds .internal-embed.markdown-embed .markdown-embed-title {
+body:not(.sw-plain-embeds) .internal-embed.markdown-embed .markdown-embed-title {
     color: var(--sw-on-green);
     font-weight: 300;
     letter-spacing: -0.03em;
+}
+
+.sw-plain-embeds .internal-embed.markdown-embed {
+    padding: 4px 18px;
+    border: 1px solid var(--sw-border);
+    border-radius: var(--radius-l);
 }
 
 /* ---------- Tables, hr, highlights ---------- */
@@ -1502,12 +1477,12 @@ body.theme-light.sw-light-forest .workspace .mod-root .workspace-tab-header.is-a
     --file-line-width: 100%;
 }
 
-body.is-phone.sw-editorial-quotes .markdown-rendered blockquote {
+body.is-phone:not(.sw-plain-quotes) .markdown-rendered blockquote {
     padding: 16px 18px;
     font-size: 1.15em;
 }
 
-body.is-phone.sw-green-embeds .internal-embed.markdown-embed {
+body.is-phone:not(.sw-plain-embeds) .internal-embed.markdown-embed {
     padding: 14px 16px;
     border-radius: var(--radius-xl);
 }
